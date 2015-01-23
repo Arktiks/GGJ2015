@@ -1,9 +1,10 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
+#include "Character.h"
+#include "GameObject.h"
 
-class GameScene :
-	public SceneParent
+class GameScene : public SceneParent
 {
 public:
 	GameScene();
@@ -17,5 +18,7 @@ private:
 	bool jumpCheck, touchGround, windowCheck;
 
 	sf::View view;
+	Character testChar;
+	GameObject testobj;
 	//Character character;
 };

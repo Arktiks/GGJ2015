@@ -3,6 +3,7 @@
 #include "SFML\System\Vector2.hpp"
 #include "SFML\Window\Keyboard.hpp"
 #include "Base\RNG.h"
+
 using namespace sf; 
 
 GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), jumpModifier(1.0f),
@@ -18,8 +19,16 @@ GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), 
 	character.setPosition(10.0f, 500.0f);
 	character.setFillColor(Color::Green);
 
+	testChar = Character(10, 1, sf::FloatRect(0, 0, 0, 0));
+	testChar.setTexture("JP.png");
+
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f));
 	view.rotate(0.0f);
+
+	testobj.setTexture("JP.png");
+	testobj.sprite.setPosition(400, 400);
+
+
 }
 
 void GameScene::Draw(sf::RenderWindow &window)
@@ -27,6 +36,8 @@ void GameScene::Draw(sf::RenderWindow &window)
 	window.draw(ground);
 	window.draw(character);
 	window.setView(view);
+	window.draw(testChar.sprite);
+	window.draw(testobj.sprite);
 }
 
 void GameScene::Update(float deltaTime, Event &events)
@@ -73,15 +84,25 @@ void GameScene::Update(float deltaTime, Event &events)
 			jumpModifier = 20.0f;
 			jumpTimer = 0.0f;
 		}
+
+		
+
 	}
+	if (Keyboard::isKeyPressed(Keyboard::Down))
+		{
+			testChar.sprite.setPosition(testChar.sprite.getPosition().x - 5.0f, testChar.sprite.getPosition().y - 5.0f);
+			testobj.sprite.setPosition(testobj.sprite.getPosition().x + 10.0f, testobj.sprite.getPosition().y + 10.0f);
+		}
+
+
 
 	// R‰tin‰‰
-	if (RNG::Chance(50))
-		view.setRotation((float)RNG::Random(1));
-	else
-		view.setRotation(0.0f - (float)RNG::Random(1));
+	//if (RNG::Chance(50))
+	//	view.setRotation((float)RNG::Random(1));
+	//else
+	//	view.setRotation(0.0f - (float)RNG::Random(1));
 
-	view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y));
+	//view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y));
 }
 
 GameScene::~GameScene()
