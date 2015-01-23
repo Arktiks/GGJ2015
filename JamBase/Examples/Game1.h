@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
-#include "Character.h"
+
 
 class Game1 :
 	public SceneParent

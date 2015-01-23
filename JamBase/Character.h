@@ -8,7 +8,7 @@ class Character : public GameObject
 public:
 
 	Character();
-	Character(float speed, float health, sf::FloatRect hitBox, char* path);
+	Character(float speed, float health, sf::FloatRect hitBox);
 
 	~Character();
 
@@ -19,7 +19,6 @@ public:
 	bool GetOnFire();
 
 	sf::FloatRect GetHitBox();
-	sf::Sprite GetCharacterSprite();
 
 	void SetSpeed(float newSpeed);
 	void SetHealth(float newSpeed);
@@ -28,8 +27,6 @@ public:
 	void SetOnFire(bool);
 
 	void SetHitBox(sf::FloatRect);
-	void SetCharacterSprite(sf::Sprite);
-
 
 
 private:

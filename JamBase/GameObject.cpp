@@ -3,11 +3,13 @@
 
 GameObject::GameObject()
 {
+	//texture = new sf::Texture;
 }
 
 
 GameObject::~GameObject()
 {
+	//delete texture;
 }
 
 void GameObject::setTexture(std::string _imageName)

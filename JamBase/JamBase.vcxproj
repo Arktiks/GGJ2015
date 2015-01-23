@@ -86,10 +86,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Base\Character.cpp" />
     <ClCompile Include="Base\R.cpp" />
     <ClCompile Include="Base\RNG.cpp" />
     <ClCompile Include="Base\SceneSys.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Gameboard.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -99,11 +99,11 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Base\Character.h" />
     <ClInclude Include="Base\R.h" />
     <ClInclude Include="Base\RNG.h" />
     <ClInclude Include="Base\SceneParent.h" />
     <ClInclude Include="Base\SceneSys.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Gameboard.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
