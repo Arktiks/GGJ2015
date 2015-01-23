@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
+#include "Character.h"
 
 class Game1 :
 	public SceneParent
@@ -13,6 +14,9 @@ public:
 
 private:
 	sf::CircleShape circle;
-	sf::RectangleShape rectangle;
+	sf::RectangleShape rectangle, rectangle2;
+	Character character;
+
 	float circleUp;
+	bool characterOnScreen;
 };
