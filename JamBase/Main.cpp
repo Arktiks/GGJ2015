@@ -5,7 +5,7 @@
 
 //#include "Gameboard.h"
 #include "Base\SceneSys.h"
-#include "Game1.h"
+#include "GameScene.h"
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
 	srand((int)time(NULL));			// Alustetaan RNG seed.
 	window.setFramerateLimit(60);	// Limit the framerate to a maximum fixed frequency.
 
-	Game1 *game = new Game1;
+	GameScene *game = new GameScene;
 	SceneSys::ChangeScene(game);
 
 	while(window.isOpen())

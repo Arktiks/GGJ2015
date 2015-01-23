@@ -26,14 +26,14 @@
     <ClCompile Include="Base\RNG.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Game1.cpp">
-      <Filter>Games</Filter>
-    </ClCompile>
     <ClCompile Include="Base\R.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="Gameboard.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Games</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,14 +46,14 @@
     <ClInclude Include="Base\RNG.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Game1.h">
-      <Filter>Games</Filter>
-    </ClInclude>
     <ClInclude Include="Base\R.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Gameboard.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Games</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
