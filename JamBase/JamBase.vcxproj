@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundScene.cpp" />
     <ClCompile Include="Base\R.cpp" />
     <ClCompile Include="Base\RNG.cpp" />
     <ClCompile Include="Base\SceneSys.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundScene.h" />
     <ClInclude Include="Base\R.h" />
     <ClInclude Include="Base\RNG.h" />
     <ClInclude Include="Base\SceneParent.h" />

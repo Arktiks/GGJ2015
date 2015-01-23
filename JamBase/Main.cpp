@@ -6,6 +6,7 @@
 //#include "Gameboard.h"
 #include "Base\SceneSys.h"
 #include "GameScene.h"
+#include "BackgroundScene.h"
 
 int main()
 {
@@ -24,7 +25,9 @@ int main()
 	window.setFramerateLimit(60);	// Limit the framerate to a maximum fixed frequency.
 
 	GameScene *game = new GameScene;
-	SceneSys::ChangeScene(game);
+	BackgroundScene *background = new BackgroundScene;
+	SceneSys::ChangeScene(background);
+	SceneSys::OpenScene(game);
 
 	while(window.isOpen())
 	{
