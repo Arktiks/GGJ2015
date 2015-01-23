@@ -8,16 +8,7 @@ using namespace sf;
 GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), jumpModifier(1.0f),
 gravitation(1.2f), windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
 {
-	RectangleShape tempGround;
-	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaperä.
-	tempGround.setPosition(0, (screenSize.y - tempGround.getSize().y));
-	tempGround.setFillColor(Color::Red);
-	groundVector.push_back(tempGround);
-
-	character.setSize(Vector2f(10.0f, 50.0f)); // Testihahmo.
-	character.setPosition(10.0f, 500.0f);
-	character.setFillColor(Color::Green);
-
+	StartPiece();
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
 }
@@ -86,7 +77,7 @@ void GameScene::Update(float deltaTime, Event &events)
 		view.setRotation(0.0f - (float)RNG::Random(1));*/
 
 	//view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y)); // Kameran scrollaus.
-	view.setCenter(Vector2f(character.getGlobalBounds().left + 100.0f, view.getCenter().y));
+	view.setCenter(Vector2f(character.getGlobalBounds().left + 200.0f, view.getCenter().y));
 
 	if ((int)view.getCenter().x % 500 == 0)
 	{
@@ -100,9 +91,15 @@ GameScene::~GameScene()
 
 void GameScene::StartPiece()
 {
+	character.setSize(Vector2f(10.0f, 50.0f)); // Testihahmo.
+	character.setPosition(200.0f, 500.0f);
+	character.setFillColor(Color::Green);
 
-
-
+	RectangleShape tempGround;
+	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaperä.
+	tempGround.setPosition(0, (screenSize.y - tempGround.getSize().y));
+	tempGround.setFillColor(Color::Red);
+	groundVector.push_back(tempGround);
 }
 
 void GameScene::Piece1()

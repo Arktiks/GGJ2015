@@ -12,8 +12,8 @@ GameObject::~GameObject()
 	//delete texture;
 }
 
-void GameObject::setTexture(std::string _imageName)
+void GameObject::setTexture(std::string imageName)
 {
-	texture.loadFromFile("Resources/Textures/"+_imageName);
+	texture.loadFromFile("Resources/Textures/"+imageName);
 	sprite.setTexture(texture);
 }

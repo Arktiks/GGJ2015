@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
+#include "Character.h"
 
 class GameScene :
 	public SceneParent
@@ -12,9 +13,9 @@ public:
 	~GameScene();
 
 private:
-	//Character *character; peli-hahmo
-
+	//Character character; // Peli-hahmo
 	sf::RectangleShape character; // Testihahmo.
+
 	sf::Vector2f screenSize; // Ruudun koko kova koodattu lel.
 	float jumpTimer, jumpModifier, gravitation; // Spagetti timereita, korjataan Character classin myötä.
 	bool jumpCheck, touchGround, windowCheck; // Korjataan Character classin myötä.
