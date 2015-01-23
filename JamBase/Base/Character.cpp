@@ -3,27 +3,14 @@
 
 Character::Character()
 {
-	sf::Texture tempCharTex;
-	if (!tempCharTex.loadFromFile("base\jp.png"))
-	{
-		std::cout << "Placeholder character texture cannot be loaded!" << std::endl;
-	}
-	sf::Sprite tempCharSprite;
-	tempCharSprite.setTexture(tempCharTex);
-	Character(
-				0, // speed
-				1, // health
-				sf::FloatRect(400, 400, 10, 10), // hitbox
-				tempCharSprite // sprite
-		);
 }
 
-Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox, sf::Sprite tempCharacterSprite)
+Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox, char* path)
 {
 	speed = tempSpeed;
 	health = tempHealth;
 	hitBox = tempHitBox;
-	characterSprite = tempCharacterSprite;
+	setTexture(path);
 	onFire = false;
 	boosting = false;
 }
@@ -59,7 +46,7 @@ sf::FloatRect Character::GetHitBox()
 
 sf::Sprite Character::GetCharacterSprite()
 {
-	return characterSprite;
+	return sprite;
 }
 
 void Character::SetSpeed(float newSpeed)
@@ -88,5 +75,5 @@ void  Character::SetHitBox(sf::FloatRect newHitBox)
 
 void  Character::SetCharacterSprite(sf::Sprite newSprite)
 {
-	characterSprite = newSprite;
+	sprite = newSprite;
 }

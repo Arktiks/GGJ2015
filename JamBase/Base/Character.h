@@ -1,13 +1,14 @@
 #pragma once
+#include "../GameObject.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
 
-class Character
+class Character : public GameObject
 {
 public:
 
 	Character();
-	Character(float speed, float health, sf::FloatRect hitBox, sf::Sprite characterSprite);
+	Character(float speed, float health, sf::FloatRect hitBox, char* path);
 
 	~Character();
 
@@ -29,7 +30,7 @@ public:
 	void SetHitBox(sf::FloatRect);
 	void SetCharacterSprite(sf::Sprite);
 
-	sf::Sprite characterSprite;
+
 
 private:
 

@@ -3,11 +3,16 @@
 class GameObject
 {
 public:
+
 	GameObject();
-	void setTexture(std::string _imageName);
 	~GameObject();
 
+	void setTexture(std::string _imageName);
+
 	sf::Sprite sprite;
+
 private:
+
 	sf::Texture texture;
+
 };
