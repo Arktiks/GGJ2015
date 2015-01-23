@@ -1,7 +1,6 @@
 // T‰m‰n hetkinen ResourceManager on mahdollista crashata aika monella tavalla. 
 // Ehdottomasti pit‰‰ huolta ett‰ resourcet tuhotaan niitten Delete-komentojen avulla.
 
-
 #pragma once
 #include <SFML\Graphics\Font.hpp>
 #include <SFML\Graphics\Texture.hpp>
