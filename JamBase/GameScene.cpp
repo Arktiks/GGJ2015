@@ -6,25 +6,27 @@
 using namespace sf; 
 
 GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), jumpModifier(1.0f),
-	gravitation(1.2f), windowCheck(false)
+gravitation(1.2f), windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
 {
-	Vector2f tempScreenSize(1280.0f, 800.0f);
-
-	ground.setSize(Vector2f(tempScreenSize.x, 50.0f)); // Alustetaan maaperä.
-	ground.setPosition(0, (tempScreenSize.y - ground.getSize().y));
-	ground.setFillColor(Color::Red);
+	RectangleShape tempGround;
+	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaperä.
+	tempGround.setPosition(0, (screenSize.y - tempGround.getSize().y));
+	tempGround.setFillColor(Color::Red);
+	groundVector.push_back(tempGround);
 
 	character.setSize(Vector2f(10.0f, 50.0f)); // Testihahmo.
 	character.setPosition(10.0f, 500.0f);
 	character.setFillColor(Color::Green);
 
-	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f));
+	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
 }
 
 void GameScene::Draw(sf::RenderWindow &window)
 {
-	window.draw(ground);
+	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
+		window.draw(*it); // Piirretään scenet järjestyksessä.
+
 	window.draw(character);
 	window.setView(view);
 }
@@ -45,12 +47,15 @@ void GameScene::Update(float deltaTime, Event &events)
 			character.getPosition().y + 3.0f * gravitation));
 	}
 
-	if (ground.getGlobalBounds().intersects(character.getGlobalBounds())) // Pusketaan hahmoa ylös jos koskee maahan.
+	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 	{
-		character.setPosition(Vector2f((character.getPosition().x),
-			character.getPosition().y - 1.0f));
-		touchGround = true;
-		jumpCheck = false;
+		if ((*it).getGlobalBounds().intersects(character.getGlobalBounds())) // Pusketaan hahmoa ylös jos koskee maahan.
+		{
+			character.setPosition(Vector2f((character.getPosition().x),
+				character.getPosition().y - 1.0f));
+			touchGround = true;
+			jumpCheck = false;
+		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Space) && !jumpCheck && touchGround) // Testihyppy.
@@ -75,15 +80,40 @@ void GameScene::Update(float deltaTime, Event &events)
 		}
 	}
 
-	// Rätinää
-	if (RNG::Chance(50))
+	/*if (RNG::Chance(50)) // ES pärisee
 		view.setRotation((float)RNG::Random(1));
 	else
-		view.setRotation(0.0f - (float)RNG::Random(1));
+		view.setRotation(0.0f - (float)RNG::Random(1));*/
 
-	view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y));
+	//view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y)); // Kameran scrollaus.
+	view.setCenter(Vector2f(character.getGlobalBounds().left + 100.0f, view.getCenter().y));
+
+	if ((int)view.getCenter().x % 500 == 0)
+	{
+		Piece1();
+	}
 }
 
 GameScene::~GameScene()
 {
+}
+
+void GameScene::StartPiece()
+{
+
+
+
+}
+
+void GameScene::Piece1()
+{
+	RectangleShape tempGround(Vector2f(1280.0f, 50.0f));
+	tempGround.setFillColor(Color::Blue);
+	tempGround.setPosition(Vector2f(view.getCenter().x + 480.0f, screenSize.y - tempGround.getSize().y));
+	groundVector.push_back(tempGround);
+
+	CircleShape aurinko(10.0f, 30u);
+	aurinko.setFillColor(Color::Magenta);
+	aurinko.setPosition(Vector2f(view.getCenter().x, screenSize.y - 400.0f));
+	//groundVector.push_back(aurinko);
 }
