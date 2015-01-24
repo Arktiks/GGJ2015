@@ -40,6 +40,11 @@ int main()
 				window.close();
 				break;
 			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
+				window.close();
+				break;
+			}
 		}
 		deltaConverter = deltaClock.restart(); // Kellosta saadaan aika sf::Time muodossa.
 		deltaTime = deltaConverter.asSeconds(); // Muutetaan sf::Time muoto floattiin.

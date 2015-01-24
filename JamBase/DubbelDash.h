@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
-class DubbelDash : Character
+
+class DubbelDash : public Character
 {
 public:
 	DubbelDash();
