@@ -15,9 +15,9 @@ public:
 	sf::Sprite sprite; // Public että voi nopeasti checkata collisionit etc.
 	int frames;
 	float animationSmoothnes;
+	sf::Texture *texture;
 
 protected:
-	sf::Texture *texture;
 	int frameCount;
 	float animationTimer;
 };

@@ -40,12 +40,13 @@ void BackgroundScene::Update(float deltaTime, Event &events)
 		it->UpdateSprite(deltaTime);
 
 	platformTimer += deltaTime;
-	if (platformTimer >= 2.0f)
+	if (platformTimer >= 1.0f)
 	{
 		GameObject tempPlatform;
-		//tempPlatform.frames = 5;
-		//tempPlatform.animationSmoothnes = 0.05f;
-		tempPlatform.sprite.setTexture(*R::LoadTexture("Flare"));
+		tempPlatform.frames = 5;
+		tempPlatform.animationSmoothnes = 0.03f;
+		tempPlatform.texture = R::LoadTexture("Flare");
+		tempPlatform.sprite.setTexture(*tempPlatform.texture);
 		tempPlatform.sprite.setScale(1.5f, 1.5f);
 		tempPlatform.sprite.setPosition(Gameboard::playerLocation.x + (float)RNG::Between(1000, 1400),
 			(float)RNG::Between(100, 700));
