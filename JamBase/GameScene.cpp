@@ -66,13 +66,9 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	if (damageProtection)
 	{
-		//character.sprite.setColor(Color::Color(RNG::Between(50, 200), RNG::Between(50, 200), RNG::Between(50, 200), 200));
 		protectionTimer += deltaTime;
 		if (protectionTimer >= 1.0f)
-		{
-			//character.sprite.setColor(Color::Black);
 			damageProtection = false;
-		}
 	}
 
 	// Hahmon liike.
@@ -124,9 +120,6 @@ void GameScene::Update(float deltaTime, Event &events)
 		startCheck = true;
 	}
 	UpdateProjectiles();
-
-	//if (Gameboard::moneyAmount == 0 || !view.getViewport().contains(character.sprite.getPosition()))
-		//Gameboard::characterIsDead = true;
 
 	if (Gameboard::moneyAmount == 0 || character.sprite.getPosition().y >= screenSize.y)
 		Gameboard::characterIsDead = true;
@@ -388,7 +381,7 @@ void GameScene::UpdateProjectiles()
 
 		if (projectiles[i].sprite.getPosition().x > character.sprite.getPosition().x + 1200)
 		{
-			//delete
+			// Delete, release.
 		}
 	}
 }

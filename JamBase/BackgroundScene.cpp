@@ -50,7 +50,6 @@ void BackgroundScene::Update(float deltaTime, Event &events)
 		tempPlatform.sprite.setScale(2.0f, 2.0f);
 		tempPlatform.sprite.setPosition(Gameboard::playerLocation.x + (float)RNG::Between(1000, 1400),
 			(float)RNG::Between(100, 700));
-		//tempPlatform.setColor(Color(255, 255, 255, 100));
 		backPlatforms.push_back(tempPlatform);
 		platformTimer = 0.0f;
 	}

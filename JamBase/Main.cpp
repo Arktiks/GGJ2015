@@ -3,20 +3,13 @@
 #include <cstdlib>
 #include <iostream>
 
-//#include "Gameboard.h"
 #include "Base\SceneSys.h"
 #include "GameScene.h"
 #include "BackgroundScene.h"
 #include "MoneyInterface.h"
 
 int main()
-{
-	// Jos ikkunan koko tulee olemaan muutettava, tällä saattaa olla väliä.
-	/*Gameboard gameboard;
-	gameboard.SetWindowSize(sf::Vector2i(1280, 800));
-	sf::RenderWindow window(sf::VideoMode(gameboard.GetWindowSize().x, gameboard.GetWindowSize().y),
-		"Game Window", sf::Style::Close | sf::Style::Titlebar); // Window that can serve as a target for 2D drawing.*/
-	
+{	
 	sf::RenderWindow window(sf::VideoMode(1280, 800), "Game Window", sf::Style::Close | sf::Style::Titlebar); // Window that can serve as a target for 2D drawing.
 	sf::Event event;				// Defines a system event and its parameters.
 	float deltaTime = 0.0f;			// Elapsed time since the game last updated.
@@ -51,7 +44,6 @@ int main()
 
 		if (Gameboard::characterIsDead)
 		{
-			//SceneSys::CleanScenes();
 			SceneSys::ChangeScene(new BackgroundScene);
 			SceneSys::OpenScene(new GameScene);
 			SceneSys::OpenScene(new MoneyInterface);

@@ -59,9 +59,6 @@
     <ClCompile Include="Capitalist.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Platform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Obstacle.cpp">
       <Filter>Resource Files\Obstacles</Filter>
     </ClCompile>

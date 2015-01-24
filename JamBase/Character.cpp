@@ -1,14 +1,5 @@
 #include "Character.h"
 
-Character::Character() : speed(0.0f), health(0.0f), boosting(false), onFire(false)
-{
-}
-
-Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox)
-	: speed(tempSpeed), health(tempHealth), hitBox(tempHitBox), onFire(false), boosting(false)
-{
-}
-
 void Character::createSounds()
 {
 	jumpSound.setBuffer(*Gameboard::soundMaster.FindSound("jump"));
@@ -61,8 +52,4 @@ void Character::SetOnFire(bool fire)
 void  Character::SetHitBox(sf::FloatRect newHitBox)
 {
 	hitBox = newHitBox;
-}
-
-Character::~Character()
-{
 }
