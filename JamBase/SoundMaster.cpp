@@ -29,6 +29,8 @@ sf::SoundBuffer* SoundMaster::FindSound(std::string name)
 	std::map<std::string, sf::SoundBuffer>::iterator it = sounds.find(name);
 	if (sounds.end() != it)
 		return &it->second;
+	else
+		return NULL;
 }
 void SoundMaster::LoadMusic(std::string name, std::string filepath)
 {

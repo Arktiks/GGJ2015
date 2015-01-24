@@ -34,7 +34,7 @@ void GameScene::Draw(sf::RenderWindow &window)
 	window.setView(view);
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
 		window.draw(it->sprite);
-	for (int i = 0; i < projectiles.size(); i++)
+	for (size_t i = 0; i < projectiles.size(); i++)
 	{
 		window.draw(projectiles[i].sprite);
 	}
@@ -123,16 +123,13 @@ void GameScene::Update(float deltaTime, Event &events)
 		zombieSpawner = 0.0f;
 		startCheck = true;
 	}
-<<<<<<< HEAD
 	UpdateProjectiles();
-=======
 
 	//if (Gameboard::moneyAmount == 0 || !view.getViewport().contains(character.sprite.getPosition()))
 		//Gameboard::characterIsDead = true;
 
 	if (Gameboard::moneyAmount == 0 || character.sprite.getPosition().y >= screenSize.y)
 		Gameboard::characterIsDead = true;
->>>>>>> origin/master
 }
 
 void GameScene::StartPiece()
@@ -373,16 +370,16 @@ void GameScene::PlatformUpdate()
 
 void GameScene::UpdateProjectiles()
 {
-	for (int i = 0; i < projectiles.size(); i++)
+	for (size_t i = 0; i < projectiles.size(); i++)
 	{
 		if (projectiles[i].type == BULLET)
 		{
 			projectiles[i].sprite.setPosition(projectiles[i].sprite.getPosition().x + projectiles[i].speedX,
 				projectiles[i].sprite.getPosition().y);
 		}
-		for (int j = 0; j < obstacles.size(); j++)
+		for (size_t j = 0; j < obstacles.size(); j++)
 		{
-			if (obstacles[j].sprite.getGlobalBounds().intersects(projectiles[i].sprite.getGlobalBounds()));
+			if (obstacles[j].sprite.getGlobalBounds().intersects(projectiles[i].sprite.getGlobalBounds()))
 			{
 				obstacles[j].isDead = true;
 				projectiles[i].isDead = true;
@@ -393,6 +390,5 @@ void GameScene::UpdateProjectiles()
 		{
 			//delete
 		}
-
 	}
 }

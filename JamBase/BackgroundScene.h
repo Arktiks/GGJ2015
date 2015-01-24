@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
+#include "GameObject.h"
 
 class BackgroundScene :
 	public SceneParent
@@ -14,6 +15,6 @@ public:
 private:
 	sf::Sprite back, back2;
 	float backSpeed;
-	std::vector<sf::Sprite> backPlatforms;
+	std::vector<GameObject> backPlatforms;
 	float platformTimer;
 };

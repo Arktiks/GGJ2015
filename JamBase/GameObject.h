@@ -13,9 +13,11 @@ public:
 	virtual ~GameObject() {}; // Vaihtelee luokittain.
 
 	sf::Sprite sprite; // Public että voi nopeasti checkata collisionit etc.
+	int frames;
+	float animationSmoothnes;
 
 protected:
 	sf::Texture *texture;
-	int frames, frameCount;
-	float animationTimer, animationSmoothnes;
+	int frameCount;
+	float animationTimer;
 };

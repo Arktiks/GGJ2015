@@ -21,8 +21,8 @@ void BackgroundScene::Draw(sf::RenderWindow &window)
 	window.draw(back);
 	window.draw(back2);
 
-	/*for (std::vector<Sprite>::iterator it = backPlatforms.begin(); it != backPlatforms.end(); it++)
-		window.draw(*it);*/
+	for (std::vector<GameObject>::iterator it = backPlatforms.begin(); it != backPlatforms.end(); it++)
+		window.draw(it->sprite);
 }
 
 void BackgroundScene::Update(float deltaTime, Event &events)
@@ -36,16 +36,21 @@ void BackgroundScene::Update(float deltaTime, Event &events)
 	if (back2.getGlobalBounds().left + back2.getGlobalBounds().width < Gameboard::gameLocation.x - 700)
 		back2.setPosition(back.getGlobalBounds().left + back.getGlobalBounds().width, 0.0f);
 
-	/*platformTimer += deltaTime;
+	for (std::vector<GameObject>::iterator it = backPlatforms.begin(); it != backPlatforms.end(); it++)
+		it->UpdateSprite(deltaTime);
+
+	platformTimer += deltaTime;
 	if (platformTimer >= 2.0f)
 	{
-		Sprite tempPlatform;
-		tempPlatform.setTexture(*R::LoadTexture("taso1"));
-		tempPlatform.setScale(0.5f, 0.5f);
-		tempPlatform.setPosition(Gameboard::playerLocation.x + (float)RNG::Between(1000, 1400),
+		GameObject tempPlatform;
+		//tempPlatform.frames = 5;
+		//tempPlatform.animationSmoothnes = 0.05f;
+		tempPlatform.sprite.setTexture(*R::LoadTexture("Flare"));
+		tempPlatform.sprite.setScale(1.5f, 1.5f);
+		tempPlatform.sprite.setPosition(Gameboard::playerLocation.x + (float)RNG::Between(1000, 1400),
 			(float)RNG::Between(100, 700));
-		tempPlatform.setColor(Color(255, 255, 255, 100));
+		//tempPlatform.setColor(Color(255, 255, 255, 100));
 		backPlatforms.push_back(tempPlatform);
 		platformTimer = 0.0f;
-	}*/
+	}
 }
