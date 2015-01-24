@@ -122,47 +122,36 @@ void GameScene::Piece1()
 
 void GameScene::PlatformSpawn()
 {
-
 	Platform tempPlat1;
-	tempPlat1.SetTexture("JP");
-	tempPlat1.sprite.setColor(sf::Color::Cyan);
-	tempPlat1.sprite.setTextureRect(sf::IntRect(100, 30, 440, 40));
-	tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 200);
+	tempPlat1.SetTexture("taso2");
+	tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 250, 25));
+	tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
 
 	Platform tempPlat2;
-	tempPlat2.SetTexture("JP");
-	tempPlat2.sprite.setColor(sf::Color::Cyan);
-	tempPlat2.sprite.setTextureRect(sf::IntRect(100, 30, 765, 40));
-	tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 740 + 1280, 200);
+	tempPlat2.SetTexture("taso2");
+	tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 740 + 1280, 280);
 
 	Platform tempPlat3;
-	tempPlat3.SetTexture("JP");
-	tempPlat3.sprite.setColor(sf::Color::Cyan);
-	tempPlat3.sprite.setTextureRect(sf::IntRect(100, 30, 365, 40));
+	tempPlat3.SetTexture("taso2");
 	tempPlat3.sprite.setPosition(character.sprite.getPosition().x - 200 + 1280, 400);
 
 	Platform tempPlat4;
-	tempPlat4.SetTexture("JP");
-	tempPlat4.sprite.setColor(sf::Color::Cyan);
-	tempPlat4.sprite.setTextureRect(sf::IntRect(100, 30, 440, 40));
+	tempPlat4.SetTexture("taso2");
 	tempPlat4.sprite.setPosition(character.sprite.getPosition().x + 440 + 1280, 400);
 
 	Platform tempPlat5;
-	tempPlat5.SetTexture("JP");
-	tempPlat5.sprite.setColor(sf::Color::Cyan);
-	tempPlat5.sprite.setTextureRect(sf::IntRect(100, 30, 340, 40));
+	tempPlat5.SetTexture("taso2");
+	tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 100, 25));
 	tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 600);
 
 	Platform tempPlat6;
-	tempPlat6.SetTexture("JP");
-	tempPlat6.sprite.setColor(sf::Color::Cyan);
-	tempPlat6.sprite.setTextureRect(sf::IntRect(100, 30, 290, 40));
+	tempPlat6.SetTexture("taso2");
+	tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 300, 25));
 	tempPlat6.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 600);
 
 	Platform tempPlat7;
-	tempPlat7.SetTexture("JP");
-	tempPlat7.sprite.setColor(sf::Color::Cyan);
-	tempPlat7.sprite.setTextureRect(sf::IntRect(100, 30, 275, 40));
+	tempPlat7.SetTexture("taso2");
+	tempPlat7.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
 	tempPlat7.sprite.setPosition(character.sprite.getPosition().x + 1230 + 1280, 600);
 
 	platformVector.push_back(tempPlat1);
@@ -172,7 +161,6 @@ void GameScene::PlatformSpawn()
 	platformVector.push_back(tempPlat5);
 	platformVector.push_back(tempPlat6);
 	platformVector.push_back(tempPlat7);
-
 }
 
 bool GameScene::CheckPlatformCollision()
