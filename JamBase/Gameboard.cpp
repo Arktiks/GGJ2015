@@ -35,7 +35,8 @@ void Gameboard::loadSounds()
 	soundMaster.AddSound("whistle", "Sounds/whistle.wav");
 
 	// Testi
-	soundMaster.setCurrentMusic("music1");
+	soundMaster.setCurrentMusic("music3");
+	soundMaster.currentMusic->setLoop(true);
 	soundMaster.currentMusic->play();
 }
 /*sf::Vector2i Gameboard::windowSize = sf::Vector2i(0, 0);

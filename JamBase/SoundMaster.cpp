@@ -10,25 +10,25 @@ SoundMaster::~SoundMaster()
 {
 }
 
-sf::SoundBuffer* SoundMaster::AddSound(std::string name, std::string filepath)
+void SoundMaster::AddSound(std::string name, std::string filepath)
 {
-	sf::SoundBuffer* buffer = new sf::SoundBuffer;
+	sf::SoundBuffer buffer;
 
-	if (!buffer->loadFromFile(filepath))
+	if (!buffer.loadFromFile(filepath))
 	{
 		std::cout << "Sound loading fucked up" << std::endl;
 	}
 	else
 	{
-		sounds.insert(std::pair<std::string, sf::SoundBuffer*>(name, buffer));
-		return buffer;
+		std::cout << name << " from " << filepath << " loaded." << std::endl;
+		sounds.insert(std::pair<std::string, sf::SoundBuffer>(name, buffer));
 	}
 }
 sf::SoundBuffer* SoundMaster::FindSound(std::string name)
 {
-	std::map<std::string, sf::SoundBuffer*>::iterator it = sounds.find(name);
-	sf::SoundBuffer* returnBuffer = it->second;
-	return returnBuffer;
+	std::map<std::string, sf::SoundBuffer>::iterator it = sounds.find(name);
+	if (sounds.end() != it)
+		return &it->second;
 }
 void SoundMaster::LoadMusic(std::string name, std::string filepath)
 {

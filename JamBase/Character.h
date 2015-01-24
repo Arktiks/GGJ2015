@@ -1,6 +1,7 @@
 #pragma once
+#include <SFML\Audio.hpp>
 #include "GameObject.h"
-
+#include "Gameboard.h"
 class Character : public GameObject
 {
 public:
@@ -22,8 +23,9 @@ public:
 	void SetBoosting(bool);
 	void SetOnFire(bool);
 	void SetHitBox(sf::FloatRect);
-	void Jump(){ speedY = -jumpSpeed; }
-
+  	void Jump(){ speedY = -jumpSpeed; jumpSound.play(); }
+	void createSounds();
+	sf::Sound jumpSound;
 	float gravity, jumpSpeed;
 
 protected:

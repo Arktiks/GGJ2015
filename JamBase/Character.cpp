@@ -9,6 +9,11 @@ Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox
 {
 }
 
+void Character::createSounds()
+{
+	jumpSound.setBuffer(*Gameboard::soundMaster.FindSound("jump"));
+}
+
 float Character::GetSpeed()
 {
 	return speed;

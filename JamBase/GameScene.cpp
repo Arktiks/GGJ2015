@@ -9,14 +9,14 @@
 #include "Rock.h"
 using namespace sf; 
 
-GameScene::GameScene() : touchSurface(false), gravitation(1.2f), 
+GameScene::GameScene() : touchSurface(false), 
 windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
 {
-	StartPiece();
-	Gameboard::loadSounds();
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
+	Gameboard::loadSounds();
 	PlatformSpawn();
+	StartPiece();
 }
 
 void GameScene::Draw(sf::RenderWindow &window)
@@ -94,6 +94,7 @@ void GameScene::StartPiece()
 {
 	Capitalist capitalist;
 	character = capitalist;
+	character.createSounds();
 	character.sprite.setPosition(Vector2f(100.0f, 400.0f));
 
 	/*WalkingEnemy tempEnemy;
@@ -120,7 +121,7 @@ void GameScene::Piece1()
 	aurinko.setPosition(Vector2f(view.getCenter().x, screenSize.y - 400.0f));
 	//groundVector.push_back(aurinko);
 
-	std::cout << character.sprite.getPosition().x << std::endl;
+//	std::cout << character.sprite.getPosition().x << std::endl;
 }
 
 void GameScene::PlatformSpawn()
