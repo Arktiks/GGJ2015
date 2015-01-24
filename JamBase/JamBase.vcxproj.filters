@@ -21,7 +21,7 @@
     <Filter Include="Scenes\User Interfaces">
       <UniqueIdentifier>{bd9c00e3-57b5-4ec8-8fe6-0b6b9a955e00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Obstacles">
+    <Filter Include="Resource Files\Obstacles">
       <UniqueIdentifier>{39338722-2169-400b-b305-94457aa80b3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -63,19 +63,22 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Obstacle.cpp">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClCompile>
     <ClCompile Include="Rock.cpp">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClCompile>
     <ClCompile Include="WalkingEnemy.cpp">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClCompile>
     <ClCompile Include="SoundMaster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WalkingEnemy2.cpp">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,20 +116,21 @@
       <Filter>Characters</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle.h">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Rock.h">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
     <ClInclude Include="WalkingEnemy.h">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
     <ClInclude Include="SoundMaster.h" />
     <ClInclude Include="WalkingEnemy2.h">
-      <Filter>Obstacles</Filter>
+      <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
+    <ClInclude Include="Projectile.h" />
   </ItemGroup>
 </Project>

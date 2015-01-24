@@ -102,6 +102,7 @@
     <ClCompile Include="MoneyInterface.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="SoundMaster.cpp" />
     <ClCompile Include="WalkingEnemy.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="MoneyInterface.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rock.h" />
     <ClInclude Include="SoundMaster.h" />
     <ClInclude Include="WalkingEnemy.h" />
