@@ -338,11 +338,12 @@ bool GameScene::CheckPlatformCollision()
 	bool temp = false;
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
 	{
-		if ((*it).sprite.getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
+		if ((*it).sprite.getGlobalBounds().contains(sf::Vector2f(character.sprite.getPosition().x, character.sprite.getPosition().y + character.sprite.getGlobalBounds().height))
+			|| (*it).sprite.getGlobalBounds().contains(sf::Vector2f(character.sprite.getPosition().x + character.sprite.getGlobalBounds().width, character.sprite.getPosition().y + character.sprite.getGlobalBounds().height))
+			&& !(character.GetSpeedY() < 0.f))
 		{
 			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
 				(*it).sprite.getGlobalBounds().top - character.sprite.getGlobalBounds().height));
-
 			temp = true;
 		}
 	}
@@ -354,7 +355,9 @@ bool GameScene::CheckGroundCollision()
 	bool temp = false;
 	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 	{
-		if ((*it).getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
+		if ((*it).getGlobalBounds().contains(sf::Vector2f(character.sprite.getPosition().x, character.sprite.getPosition().y + character.sprite.getGlobalBounds().height))
+			|| (*it).getGlobalBounds().contains(sf::Vector2f(character.sprite.getPosition().x + character.sprite.getGlobalBounds().width, character.sprite.getPosition().y + character.sprite.getGlobalBounds().height))
+			&& !(character.GetSpeedY() < 0.f))
 		{
 			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
 				(*it).getGlobalBounds().top - character.sprite.getGlobalBounds().height));
