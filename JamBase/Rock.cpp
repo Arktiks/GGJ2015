@@ -9,6 +9,7 @@ Rock::Rock()
 	damage = 1;
 	texture = R::LoadTexture("rock");
 	sprite.setTexture(*texture);
+	sprite.setScale(0.2f, 0.2f);
 
 	frames = 0;
 	frameCount = 0;

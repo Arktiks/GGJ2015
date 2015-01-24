@@ -9,6 +9,7 @@ WalkingEnemy::WalkingEnemy()
 	damage = 1;
 	texture = R::LoadTexture("slime_sheet");
 	sprite.setTexture(*texture);
+	sprite.setScale(0.2f, 0.2f);
 
 	frames = 7;
 	frameCount = 0;

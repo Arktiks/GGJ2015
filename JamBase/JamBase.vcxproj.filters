@@ -124,9 +124,11 @@
     <ClInclude Include="WalkingEnemy.h">
       <Filter>Obstacles</Filter>
     </ClInclude>
-    <ClInclude Include="SoundMaster.h" />
     <ClInclude Include="WalkingEnemy2.h">
       <Filter>Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMaster.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
