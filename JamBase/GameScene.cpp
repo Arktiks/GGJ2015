@@ -165,8 +165,6 @@ void GameScene::PlatformSpawn()
 	tempPlat7.sprite.setTextureRect(sf::IntRect(100, 30, 275, 40));
 	tempPlat7.sprite.setPosition(character.sprite.getPosition().x + 1230 + 1280, 600);
 
-
-
 	platformVector.push_back(tempPlat1);
 	platformVector.push_back(tempPlat2);
 	platformVector.push_back(tempPlat3);
