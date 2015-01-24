@@ -10,8 +10,8 @@
 #include "Rock.h"
 using namespace sf; 
 
-GameScene::GameScene() : touchSurface(false), 
-windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), zombieSpawner(0.0f)
+GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f),
+windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), zombieSpawner(0.0f), damageProtection(false)
 {
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
@@ -48,7 +48,22 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	// P‰ivitet‰‰n Obstaclen "eteneminen".
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+	{
 		it->sprite.setPosition(Vector2f(it->sprite.getPosition().x - it->speed, it->sprite.getPosition().y));
+		if (it->sprite.getGlobalBounds().intersects(character.sprite.getGlobalBounds())
+			&& !damageProtection)
+		{
+			Gameboard::moneyAmount--;
+			damageProtection = true;
+		}
+	}
+
+	if (damageProtection)
+	{
+		protectionTimer += deltaTime;
+		if (protectionTimer >= 1.0f)
+			damageProtection = false;
+	}
 
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),

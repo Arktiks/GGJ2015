@@ -18,8 +18,9 @@ public:
 private:
 	Character character; // Peli-hahmo
 	sf::Vector2f screenSize; // Ruudun koko kova koodattu lel.
-	float gravitation, zombieSpawner; // Spagetti timereita, korjataan Character classin myötä.
+	float gravitation, zombieSpawner, protectionTimer; // Spagetti timereita, korjataan Character classin myötä.
 	bool windowCheck, touchSurface; // Korjataan Character classin myötä.
+	bool damageProtection;
 	
 	sf::View view; // Ikkunan scrollaus.
 	std::vector<sf::RectangleShape> groundVector;
