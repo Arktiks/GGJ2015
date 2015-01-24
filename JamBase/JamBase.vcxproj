@@ -100,7 +100,9 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoneyInterface.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Rock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundScene.h" />
@@ -117,7 +119,9 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="MoneyInterface.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="Rock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

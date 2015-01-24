@@ -1,13 +1,14 @@
 #pragma once
 #include "GameObject.h"
-class Obstacle :
-	public GameObject
+
+class Obstacle : public GameObject
 {
 public:
-	Obstacle(){}
-	Obstacle(int _hp, int _dmg);
-	~Obstacle();
-	void takeDamage(int _dmg);
+	Obstacle() : HP(0), damage(0), isDead(false), onFire(false) {};
+	Obstacle(int hp, int dmg) : HP(hp), damage(dmg), isDead(false), onFire(false) {};
+
+	virtual void TakeDamage(int dmg);
+	virtual ~Obstacle() {};
 
 	bool isDead;
 	bool onFire;

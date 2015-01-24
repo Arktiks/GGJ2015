@@ -6,11 +6,3 @@ void GameObject::SetTexture(std::string imageName)
 	texture = R::LoadTexture(imageName);
 	sprite.setTexture(*texture);
 }
-
-GameObject::GameObject()
-{
-}
-
-GameObject::~GameObject()
-{
-}

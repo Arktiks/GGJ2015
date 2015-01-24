@@ -4,10 +4,12 @@
 class GameObject
 {
 public:
-	GameObject();
-	~GameObject();
-	void SetTexture(std::string imageName);
-	sf::Sprite sprite;
+	GameObject() : texture(NULL) {};
+	
+	virtual void SetTexture(std::string imageName); // Voi vaihdella luokittain.
+	virtual ~GameObject() {}; // Vaihtelee luokittain.
+
+	sf::Sprite sprite; // Public että voi nopeasti checkata collisionit etc.
 
 protected:
 	sf::Texture *texture;

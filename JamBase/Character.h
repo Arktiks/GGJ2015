@@ -9,6 +9,7 @@ public:
 	~Character();
 
 	float GetSpeed();
+	float GetSpeedY(){ return speedY; }
 	float GetHealth();
 	bool GetBoosting();
 	bool GetOnFire();
@@ -16,15 +17,17 @@ public:
 	sf::FloatRect GetHitBox();
 
 	void SetSpeed(float newSpeed);
+	void SetSpeedY(float newSpeed){ speedY = newSpeed; }
 	void SetHealth(float newSpeed);
 	void SetBoosting(bool);
 	void SetOnFire(bool);
 	void SetHitBox(sf::FloatRect);
+	void Jump(){ speedY = -jumpSpeed; }
 
-	float weight, jumpPower, jumpThrust, jumpFloat;
+	float gravity, jumpSpeed;
 
 protected:
-	float speed, health;
+	float speed, speedY, health;
 	bool boosting, onFire;
 	sf::FloatRect hitBox;
 };
