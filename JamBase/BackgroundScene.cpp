@@ -11,9 +11,9 @@ BackgroundScene::BackgroundScene() : backSpeed(0.1f), platformTimer(0.0f)
 	Texture *tempPointer = R::LoadTexture("parallax_back");
 	back.setTexture(*tempPointer);
 	back.setScale(1.68f, 1.68f);
-	back.setPosition(0.0f, 0.0f);
+	back.setPosition(-300.0f, 0.0f);
 	back2 = back;
-	back2.setPosition(back.getGlobalBounds().width, 0.0f);
+	back2.setPosition(back.getGlobalBounds().width - 300, 0.0f);
 }
 
 void BackgroundScene::Draw(sf::RenderWindow &window)

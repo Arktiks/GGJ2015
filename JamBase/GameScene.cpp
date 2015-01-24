@@ -102,9 +102,9 @@ void GameScene::StartPiece()
 	obstacles.push_back(tempEnemy);*/
 
 	RectangleShape tempGround;
-	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaperä.
-	tempGround.setPosition(0, (screenSize.y - tempGround.getSize().y));
-	tempGround.setFillColor(Color::Red);
+	tempGround.setSize(Vector2f(screenSize.x * 2, 30.0f)); // Alustetaan maaperä.
+	tempGround.setPosition(0 - 300, (screenSize.y - tempGround.getSize().y));
+	tempGround.setFillColor(Color::Black);
 	groundVector.push_back(tempGround);
 }
 

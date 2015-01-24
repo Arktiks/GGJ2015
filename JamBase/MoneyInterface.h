@@ -10,11 +10,11 @@ public:
 	MoneyInterface();
 	void Draw(sf::RenderWindow &window);
 	void Update(float deltaTime, sf::Event &events);
-	~MoneyInterface();
+	~MoneyInterface() {};
 
 private:
 	//int moneyAmount;
 	sf::RectangleShape moneyMeter;
-	sf::Text characterName;
-	const sf::String name = "money dude";
+	//sf::Text characterName;
+	//const sf::String name = "money dude";
 };
