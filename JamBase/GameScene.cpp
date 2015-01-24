@@ -6,6 +6,7 @@
 #include "Gameboard.h"
 #include "Capitalist.h"
 #include "WalkingEnemy.h"
+#include "Rock.h"
 using namespace sf; 
 
 GameScene::GameScene() : touchSurface(false), gravitation(1.2f), 
@@ -173,10 +174,13 @@ void GameScene::PlatformSpawn()
 		}
 		case 1:
 		{
-			WalkingEnemy tempEnemy;
-			tempEnemy.sprite.setScale(0.25f, 0.25f);
-			tempEnemy.sprite.setPosition(character.sprite.getPosition().x + 2280.0f, 200.0f - tempEnemy.sprite.getGlobalBounds().height);
-			obstacles.push_back(tempEnemy);
+			if (RNG::Chance(50))
+			{
+				WalkingEnemy tempEnemy;
+				tempEnemy.sprite.setScale(0.25f, 0.25f);
+				tempEnemy.sprite.setPosition(character.sprite.getPosition().x + 2280.0f, 200.0f - tempEnemy.sprite.getGlobalBounds().height);
+				obstacles.push_back(tempEnemy);
+			}
 
 			Platform tempPlatta1;
 			tempPlatta1.SetTexture("JP");
@@ -219,6 +223,14 @@ void GameScene::PlatformSpawn()
 		}
 		case 2:
 		{
+			if (RNG::Chance(50))
+			{
+				Rock tempEnemy;
+				tempEnemy.sprite.setScale(0.2, 0.2f);
+				tempEnemy.sprite.setPosition(character.sprite.getPosition().x + 2280, 200.0f - tempEnemy.sprite.getGlobalBounds().height);
+				obstacles.push_back(tempEnemy);
+			}
+			
 			Platform tempPlatta1;
 			tempPlatta1.SetTexture("JP");
 			tempPlatta1.sprite.setColor(sf::Color::Cyan);
