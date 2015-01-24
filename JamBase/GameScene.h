@@ -21,7 +21,7 @@ private:
 	sf::Vector2f screenSize; // Ruudun koko kova koodattu lel.
 	float gravitation, zombieSpawner, protectionTimer; // Spagetti timereita, korjataan Character classin myötä.
 	bool windowCheck, touchSurface; // Korjataan Character classin myötä.
-	bool damageProtection;
+	bool damageProtection, startCheck;
 	
 	sf::View view; // Ikkunan scrollaus.
 	std::vector<sf::RectangleShape> groundVector;

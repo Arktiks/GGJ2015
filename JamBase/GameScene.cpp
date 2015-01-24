@@ -3,6 +3,7 @@
 #include "SFML\System\Vector2.hpp"
 #include "SFML\Window\Keyboard.hpp"
 #include "Base\RNG.h"
+#include "R.h"
 #include "Gameboard.h"
 #include "Capitalist.h"
 #include "WalkingEnemy.h"
@@ -11,7 +12,7 @@
 #include "R.h"
 using namespace sf; 
 
-GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f),
+GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f), startCheck(false),
 windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), zombieSpawner(0.0f), damageProtection(false)
 {
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
@@ -65,9 +66,13 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	if (damageProtection)
 	{
+		//character.sprite.setColor(Color::Color(RNG::Between(50, 200), RNG::Between(50, 200), RNG::Between(50, 200), 200));
 		protectionTimer += deltaTime;
 		if (protectionTimer >= 1.0f)
+		{
+			//character.sprite.setColor(Color::Black);
 			damageProtection = false;
+		}
 	}
 
 	// Hahmon liike.
@@ -116,8 +121,18 @@ void GameScene::Update(float deltaTime, Event &events)
 		tempEnemy.sprite.setPosition(character.sprite.getGlobalBounds().left + 1300.0f, 730.0f);
 		obstacles.push_back(tempEnemy);
 		zombieSpawner = 0.0f;
+		startCheck = true;
 	}
+<<<<<<< HEAD
 	UpdateProjectiles();
+=======
+
+	//if (Gameboard::moneyAmount == 0 || !view.getViewport().contains(character.sprite.getPosition()))
+		//Gameboard::characterIsDead = true;
+
+	if (Gameboard::moneyAmount == 0 || character.sprite.getPosition().y >= screenSize.y)
+		Gameboard::characterIsDead = true;
+>>>>>>> origin/master
 }
 
 void GameScene::StartPiece()
@@ -129,8 +144,8 @@ void GameScene::StartPiece()
 
 	RectangleShape tempGround;
 	tempGround.setSize(Vector2f(screenSize.x * 2, 30.0f)); // Alustetaan maaperä.
-	tempGround.setPosition(0 - 300, (screenSize.y - tempGround.getSize().y));
-	tempGround.setFillColor(Color::Black);
+	tempGround.setPosition(-300, (screenSize.y - 25));
+	tempGround.setTexture(R::LoadTexture("taso2"));
 	groundVector.push_back(tempGround);
 }
 
@@ -164,7 +179,7 @@ void GameScene::PlatformSpawn()
 		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 140, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x - 200 + 1280, 400);
 
-		if (RNG::Chance(10))
+		if (RNG::Chance(20))
 		{
 			Rock tempEnemy;
 			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 300, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 10);
@@ -223,7 +238,7 @@ void GameScene::PlatformSpawn()
 		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 200 + 1280, 500);
 
-		if (RNG::Chance(10))
+		if (RNG::Chance(20))
 		{
 			WalkingEnemy tempEnemy;
 			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 448, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 4);
@@ -264,7 +279,7 @@ void GameScene::PlatformSpawn()
 		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 650 + 1280, 400);
 
-		if (RNG::Chance(10))
+		if (RNG::Chance(20))
 		{
 			WalkingEnemy tempEnemy;
 			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 648, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 4);
@@ -274,12 +289,12 @@ void GameScene::PlatformSpawn()
 		Platform tempPlat4;
 		tempPlat4.SetTexture("taso2");
 		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 400, 25));
-		tempPlat4.sprite.setPosition(character.sprite.getPosition().x - 100 + 1280, 200);
+		tempPlat4.sprite.setPosition(character.sprite.getPosition().x - 100 + 1280, 300);
 
 		Platform tempPlat5;
 		tempPlat5.SetTexture("taso2");
 		tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
-		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 500 + 1280, 180);
+		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 500 + 1280, 480);
 
 		Platform tempPlat6;
 		tempPlat6.SetTexture("taso2");
