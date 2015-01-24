@@ -5,7 +5,7 @@ using namespace sf;
 Capitalist::Capitalist()
 {
 	gravity = 0.75f;
-	jumpSpeed = 14.5;
+	jumpSpeed = 16.5;
 	speedY = 0.0f;
 	speed = 15.0f;
 	health = 0.0f;
