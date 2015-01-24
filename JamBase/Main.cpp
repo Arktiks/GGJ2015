@@ -51,11 +51,12 @@ int main()
 
 		if (Gameboard::characterIsDead)
 		{
-			SceneSys::CleanScenes();
+			//SceneSys::CleanScenes();
 			SceneSys::ChangeScene(new BackgroundScene);
 			SceneSys::OpenScene(new GameScene);
 			SceneSys::OpenScene(new MoneyInterface);
 			Gameboard::characterIsDead = false;
+			Gameboard::moneyAmount = 3;
 		}
 
 		SceneSys::Update(deltaTime, event); // P‰ivitet‰‰n avatut scenet.

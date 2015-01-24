@@ -11,7 +11,7 @@
 #include "Rock.h"
 using namespace sf; 
 
-GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f),
+GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f), startCheck(false),
 windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), zombieSpawner(0.0f), damageProtection(false)
 {
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
@@ -110,7 +110,14 @@ void GameScene::Update(float deltaTime, Event &events)
 		tempEnemy.sprite.setPosition(character.sprite.getGlobalBounds().left + 1300.0f, 730.0f);
 		obstacles.push_back(tempEnemy);
 		zombieSpawner = 0.0f;
+		startCheck = true;
 	}
+
+	//if (Gameboard::moneyAmount == 0 || !view.getViewport().contains(character.sprite.getPosition()))
+		//Gameboard::characterIsDead = true;
+
+	if (Gameboard::moneyAmount == 0 || character.sprite.getPosition().y >= screenSize.y)
+		Gameboard::characterIsDead = true;
 }
 
 void GameScene::StartPiece()
