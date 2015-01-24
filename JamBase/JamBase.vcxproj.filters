@@ -56,6 +56,9 @@
     <ClCompile Include="Capitalist.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SceneParent.h">
@@ -91,5 +94,6 @@
     <ClInclude Include="Capitalist.h">
       <Filter>Characters</Filter>
     </ClInclude>
+    <ClInclude Include="Platform.h" />
   </ItemGroup>
 </Project>

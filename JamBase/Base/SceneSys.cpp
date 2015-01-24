@@ -18,7 +18,7 @@ void SceneSys::Update(const float deltaTime, sf::Event &events)
 			(*it)->Update(deltaTime, events);
 		if(sceneChanged) // Jos scenejen m‰‰r‰ vaihtuu Updaten aikana - vanha iteraattori ei kelpaa en‰‰.
 		{
-			sceneChanged=false;
+			sceneChanged = false;
 			break; // Poistutaan Update-loopista.
 		}
 	}
@@ -27,7 +27,7 @@ void SceneSys::Update(const float deltaTime, sf::Event &events)
 void SceneSys::OpenScene(SceneParent *newScene)
 {
 	currentScenes.push_back(newScene);
-	sceneChanged=true;
+	sceneChanged = true;
 }
 
 void SceneSys::ChangeScene(SceneParent *newScene)

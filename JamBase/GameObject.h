@@ -6,7 +6,7 @@ class GameObject
 public:
 	GameObject();
 	~GameObject();
-	//void SetTexture(std::string imageName);
+	void SetTexture(std::string imageName);
 	sf::Sprite sprite;
 
 protected:
