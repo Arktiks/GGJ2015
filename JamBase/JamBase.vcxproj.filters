@@ -74,6 +74,9 @@
     <ClCompile Include="SoundMaster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WalkingEnemy2.cpp">
+      <Filter>Obstacles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SceneParent.h">
@@ -122,5 +125,8 @@
       <Filter>Obstacles</Filter>
     </ClInclude>
     <ClInclude Include="SoundMaster.h" />
+    <ClInclude Include="WalkingEnemy2.h">
+      <Filter>Obstacles</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
