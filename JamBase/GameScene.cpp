@@ -43,6 +43,8 @@ void GameScene::Update(float deltaTime, Event &events)
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
 		it->UpdateSprite(deltaTime);
 
+	character.UpdateSprite(deltaTime);
+
 	// P‰ivitet‰‰n Obstaclen "eteneminen".
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
 		it->sprite.setPosition(Vector2f(it->sprite.getPosition().x - it->speed, it->sprite.getPosition().y));

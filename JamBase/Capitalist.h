@@ -5,5 +5,5 @@ class Capitalist : public Character
 {
 public:
 	Capitalist();
-	~Capitalist();
+	~Capitalist() {};
 };

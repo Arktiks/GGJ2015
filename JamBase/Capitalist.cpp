@@ -5,18 +5,19 @@ using namespace sf;
 Capitalist::Capitalist()
 {
 	gravity = 0.5f;
-	jumpSpeed = 12.5;
+	jumpSpeed = 15.5;
 	speedY = 0.0f;
 	speed = 15.0f;
 	health = 0.0f;
 	boosting = false;
 	onFire = false;
-	texture = R::LoadTexture("sprite");
+	texture = R::LoadTexture("Fireman_run");
 	texture->setRepeated(true);
 	sprite.setTexture(*texture);
-	sprite.setScale(Vector2f(0.05f, 0.05f));
-}
+	sprite.setScale(Vector2f(3.5f, 3.5f));
 
-Capitalist::~Capitalist()
-{
+	frames = 5;
+	frameCount = 0;
+	animationTimer = 0.0f;
+	animationSmoothnes = 0.02f;
 }
