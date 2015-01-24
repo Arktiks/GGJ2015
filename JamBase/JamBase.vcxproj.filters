@@ -68,6 +68,9 @@
     <ClCompile Include="Rock.cpp">
       <Filter>Obstacles</Filter>
     </ClCompile>
+    <ClCompile Include="WalkingEnemy.cpp">
+      <Filter>Obstacles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SceneParent.h">
@@ -110,6 +113,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Rock.h">
+      <Filter>Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkingEnemy.h">
       <Filter>Obstacles</Filter>
     </ClInclude>
   </ItemGroup>
