@@ -8,6 +8,7 @@
 #include "WalkingEnemy.h"
 #include "WalkingEnemy2.h"
 #include "Rock.h"
+#include "R.h"
 using namespace sf; 
 
 GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f),
@@ -32,6 +33,10 @@ void GameScene::Draw(sf::RenderWindow &window)
 	window.setView(view);
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
 		window.draw(it->sprite);
+	for (int i = 0; i < projectiles.size(); i++)
+	{
+		window.draw(projectiles[i].sprite);
+	}
 }
 
 void GameScene::Update(float deltaTime, Event &events)
@@ -90,6 +95,12 @@ void GameScene::Update(float deltaTime, Event &events)
 		character.Jump();
 		touchSurface = false;
 	}
+	if (Keyboard::isKeyPressed(Keyboard::Z))
+	{
+		Projectile projectile(BULLET);
+		projectile.sprite.setPosition(character.sprite.getGlobalBounds().left, character.sprite.getGlobalBounds().top);
+		projectiles.push_back(projectile);
+	}
 
 	// Kameran scrollaus.
 	view.setCenter(Vector2f(character.sprite.getGlobalBounds().left + 200.0f, view.getCenter().y));
@@ -106,6 +117,7 @@ void GameScene::Update(float deltaTime, Event &events)
 		obstacles.push_back(tempEnemy);
 		zombieSpawner = 0.0f;
 	}
+	UpdateProjectiles();
 }
 
 void GameScene::StartPiece()
@@ -350,7 +362,7 @@ void GameScene::UpdateProjectiles()
 	{
 		if (projectiles[i].type == BULLET)
 		{
-			projectiles[i].sprite.setPosition(projectiles[i].sprite.getPosition().x + 2,
+			projectiles[i].sprite.setPosition(projectiles[i].sprite.getPosition().x + projectiles[i].speedX,
 				projectiles[i].sprite.getPosition().y);
 		}
 		for (int j = 0; j < obstacles.size(); j++)
