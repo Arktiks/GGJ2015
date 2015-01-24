@@ -125,45 +125,135 @@ void GameScene::Piece1()
 
 void GameScene::PlatformSpawn()
 {
-	Platform tempPlat1;
-	tempPlat1.SetTexture("taso2");
-	tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 250, 25));
-	tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
+	int choice = RNG::Random(1);
+	switch (choice)
+	{
+	case 0:
+	{
+		Platform tempPlat1;
+		tempPlat1.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 300, 25));
+		tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
 
-	Platform tempPlat2;
-	tempPlat2.SetTexture("taso2");
-	tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 740 + 1280, 280);
+		Platform tempPlat2;
+		tempPlat2.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 540, 25));
+		tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 740 + 1280, 280);
 
-	Platform tempPlat3;
-	tempPlat3.SetTexture("taso2");
-	tempPlat3.sprite.setPosition(character.sprite.getPosition().x - 200 + 1280, 400);
+		Platform tempPlat3;
+		tempPlat3.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 140, 25));
+		tempPlat3.sprite.setPosition(character.sprite.getPosition().x - 200 + 1280, 400);
 
-	Platform tempPlat4;
-	tempPlat4.SetTexture("taso2");
-	tempPlat4.sprite.setPosition(character.sprite.getPosition().x + 440 + 1280, 400);
+		Platform tempPlat4;
+		tempPlat4.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 440, 25));
+		tempPlat4.sprite.setPosition(character.sprite.getPosition().x + 440 + 1280, 400);
 
-	Platform tempPlat5;
-	tempPlat5.SetTexture("taso2");
-	tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 100, 25));
-	tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 600);
+		Platform tempPlat5;
+		tempPlat5.SetTexture("taso2");
+		tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 340, 25));
+		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 600);
 
-	Platform tempPlat6;
-	tempPlat6.SetTexture("taso2");
-	tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 300, 25));
-	tempPlat6.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 600);
+		Platform tempPlat6;
+		tempPlat6.SetTexture("taso2");
+		tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 290, 25));
+		tempPlat6.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 600);
 
-	Platform tempPlat7;
-	tempPlat7.SetTexture("taso2");
-	tempPlat7.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
-	tempPlat7.sprite.setPosition(character.sprite.getPosition().x + 1230 + 1280, 600);
+		Platform tempPlat7;
+		tempPlat7.SetTexture("taso2");
+		tempPlat7.sprite.setTextureRect(sf::IntRect(0, 0, 150, 25));
+		tempPlat7.sprite.setPosition(character.sprite.getPosition().x + 1030 + 1280, 600);
 
-	platformVector.push_back(tempPlat1);
-	platformVector.push_back(tempPlat2);
-	platformVector.push_back(tempPlat3);
-	platformVector.push_back(tempPlat4);
-	platformVector.push_back(tempPlat5);
-	platformVector.push_back(tempPlat6);
-	platformVector.push_back(tempPlat7);
+		platformVector.push_back(tempPlat1);
+		platformVector.push_back(tempPlat2);
+		platformVector.push_back(tempPlat3);
+		platformVector.push_back(tempPlat4);
+		platformVector.push_back(tempPlat5);
+		platformVector.push_back(tempPlat6);
+		platformVector.push_back(tempPlat7);
+	}
+	case 1:
+	{
+		Platform tempPlat1;
+		tempPlat1.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 400, 25));
+		tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
+
+		Platform tempPlat2;
+		tempPlat2.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 600, 25));
+		tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 800 + 1280, 300);
+
+		Platform tempPlat3;
+		tempPlat3.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 700, 25));
+		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 200 + 1280, 500);
+
+		Platform tempPlat4;
+		tempPlat4.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
+		tempPlat4.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 580);
+
+		Platform tempPlat5;
+		tempPlat5.SetTexture("taso2");
+		tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 400, 25));
+		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 800 + 1280, 600);
+
+		platformVector.push_back(tempPlat1);
+		platformVector.push_back(tempPlat2);
+		platformVector.push_back(tempPlat3);
+		platformVector.push_back(tempPlat4);
+		platformVector.push_back(tempPlat5);
+		break;
+	}
+	case 2:
+	{
+		Platform tempPlat1;
+		tempPlat1.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 500, 25));
+		tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
+
+		Platform tempPlat2;
+		tempPlat2.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
+		tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 100 + 1280, 400);
+
+		Platform tempPlat3;
+		tempPlat3.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 750, 25));
+		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 650 + 1280, 400);
+
+		Platform tempPlat4;
+		tempPlat4.SetTexture("taso2");
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 400, 25));
+		tempPlat4.sprite.setPosition(character.sprite.getPosition().x - 100 + 1280, 200);
+
+		Platform tempPlat5;
+		tempPlat5.SetTexture("taso2");
+		tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 200, 25));
+		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 500 + 1280, 180);
+
+		Platform tempPlat6;
+		tempPlat6.SetTexture("taso2");
+		tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 500, 25));
+		tempPlat6.sprite.setPosition(character.sprite.getPosition().x + 1000 + 1280, 150);
+
+
+		platformVector.push_back(tempPlat1);
+		platformVector.push_back(tempPlat2);
+		platformVector.push_back(tempPlat3);
+		platformVector.push_back(tempPlat4);
+		platformVector.push_back(tempPlat5);
+		platformVector.push_back(tempPlat6);
+		break;
+	}
+	default:
+	{
+		break;
+	}
+	}
+
 }
 
 bool GameScene::CheckPlatformCollision()

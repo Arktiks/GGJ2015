@@ -4,8 +4,8 @@ using namespace sf;
 
 Capitalist::Capitalist()
 {
-	gravity = 0.5f;
-	jumpSpeed = 15.5;
+	gravity = 0.75f;
+	jumpSpeed = 14.5;
 	speedY = 0.0f;
 	speed = 15.0f;
 	health = 0.0f;
@@ -14,7 +14,7 @@ Capitalist::Capitalist()
 	texture = R::LoadTexture("Fireman_run");
 	texture->setRepeated(true);
 	sprite.setTexture(*texture);
-	sprite.setScale(Vector2f(3.5f, 3.5f));
+	sprite.setScale(Vector2f(2.5f, 2.5f));
 
 	frames = 5;
 	frameCount = 0;
