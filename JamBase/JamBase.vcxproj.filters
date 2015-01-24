@@ -12,8 +12,14 @@
     <Filter Include="Base">
       <UniqueIdentifier>{3c8ced0e-b6e1-4b2b-a1fc-a15d4ce43f28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Games">
+    <Filter Include="Scenes">
       <UniqueIdentifier>{f3da598a-54e9-4bec-921d-56ee2fa99cf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters">
+      <UniqueIdentifier>{e825fdf4-87c5-45a5-b82e-122f71edcf03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\User Interfaces">
+      <UniqueIdentifier>{bd9c00e3-57b5-4ec8-8fe6-0b6b9a955e00}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,16 +39,22 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>Games</Filter>
+      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Games</Filter>
-    </ClCompile>
     <ClCompile Include="BackgroundScene.cpp">
-      <Filter>Games</Filter>
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyInterface.cpp">
+      <Filter>Scenes\User Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Capitalist.cpp">
+      <Filter>Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,16 +74,22 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Games</Filter>
+      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Games</Filter>
-    </ClInclude>
     <ClInclude Include="BackgroundScene.h">
-      <Filter>Games</Filter>
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyInterface.h">
+      <Filter>Scenes\User Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Capitalist.h">
+      <Filter>Characters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

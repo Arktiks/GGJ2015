@@ -1,19 +1,16 @@
 #include "GameObject.h"
+#include "R.h"
 
-
-GameObject::GameObject()
-{
-	//texture = new sf::Texture;
-}
-
-
-GameObject::~GameObject()
-{
-	//delete texture;
-}
-
-void GameObject::setTexture(std::string imageName)
+/*void GameObject::SetTexture(std::string imageName)
 {
 	texture.loadFromFile("Resources/Textures/"+imageName);
 	sprite.setTexture(texture);
+}*/
+
+GameObject::GameObject()
+{
+}
+
+GameObject::~GameObject()
+{
 }

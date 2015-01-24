@@ -90,14 +90,16 @@
     <ClCompile Include="Base\R.cpp" />
     <ClCompile Include="Base\RNG.cpp" />
     <ClCompile Include="Base\SceneSys.cpp" />
+    <ClCompile Include="Capitalist.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Gameboard.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MoneyInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundScene.h" />
@@ -105,13 +107,15 @@
     <ClInclude Include="Base\RNG.h" />
     <ClInclude Include="Base\SceneParent.h" />
     <ClInclude Include="Base\SceneSys.h" />
+    <ClInclude Include="Capitalist.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Gameboard.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="MoneyInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

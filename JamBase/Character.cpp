@@ -1,22 +1,13 @@
 #include "Character.h"
 
-
-Character::Character()
+Character::Character() : speed(0.0f), health(0.0f), boosting(false), onFire(false)
 {
 }
 
-Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox) : GameObject()
+Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox)
+	: speed(tempSpeed), health(tempHealth), hitBox(tempHitBox), onFire(false), boosting(false),
+	weight(0.0f), jumpPower(0.0f)
 {
-	speed = tempSpeed;
-	health = tempHealth;
-	hitBox = tempHitBox;
-	onFire = false;
-	boosting = false;
-}
-
-Character::~Character()
-{
-
 }
 
 float Character::GetSpeed()
@@ -47,6 +38,7 @@ void Character::SetSpeed(float newSpeed)
 {
 	speed = newSpeed;
 }
+
 void Character::SetHealth(float newHealth)
 {
 	health = newHealth;
@@ -65,4 +57,8 @@ void Character::SetOnFire(bool fire)
 void  Character::SetHitBox(sf::FloatRect newHitBox)
 {
 	hitBox = newHitBox;
+}
+
+Character::~Character()
+{
 }

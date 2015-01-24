@@ -3,10 +3,12 @@
 #include "SFML\System\Vector2.hpp"
 #include "SFML\Window\Keyboard.hpp"
 #include "Base\RNG.h"
+#include "Gameboard.h"
+#include "Capitalist.h"
 using namespace sf; 
 
 GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), jumpModifier(1.0f),
-gravitation(1.2f), windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
+gravitation(1.2f), windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), jumpTicks(0.0f)
 {
 	StartPiece();
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
@@ -18,7 +20,7 @@ void GameScene::Draw(sf::RenderWindow &window)
 	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 		window.draw(*it); // Piirretään scenet järjestyksessä.
 
-	window.draw(character);
+	window.draw(character.sprite);
 	window.setView(view);
 }
 
@@ -29,55 +31,68 @@ void GameScene::Update(float deltaTime, Event &events)
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		rectangle.setPosition((rectangle.getPosition() + sf::Vector2f(5.0f, 0.0f)));*/
 
-	character.setPosition(Vector2f((character.getPosition().x + 3.0f),
-		character.getPosition().y)); // Hahmon liike.
+	// Päivitetään jumala-luokkaa
+	Gameboard::playerLocation = Vector2f(character.sprite.getGlobalBounds().left, character.sprite.getGlobalBounds().top);
+	Gameboard::gameLocation = Vector2f(view.getCenter().x, view.getCenter().y);
 
-	if (!jumpCheck && !touchGround) // Hahmon putoamisliike.
+	// Hahmon liike.
+	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
+		character.sprite.getPosition().y));
+
+	// Hahmon putoamisliike.
+	if (!jumpCheck && !touchGround) 
 	{
-		character.setPosition(Vector2f((character.getPosition().x),
-			character.getPosition().y + 3.0f * gravitation));
+		character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
+			character.sprite.getPosition().y + character.weight + jumpTicks * 0.5f));
 	}
 
+	// Pusketaan hahmoa ylös jos koskee maahan.
 	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 	{
-		if ((*it).getGlobalBounds().intersects(character.getGlobalBounds())) // Pusketaan hahmoa ylös jos koskee maahan.
+		if ((*it).getGlobalBounds().intersects(character.sprite.getGlobalBounds())) 
 		{
-			character.setPosition(Vector2f((character.getPosition().x),
-				character.getPosition().y - 1.0f));
+			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
+				character.sprite.getPosition().y - 1.0f));
 			touchGround = true;
 			jumpCheck = false;
-		}
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::Space) && !jumpCheck && touchGround) // Testihyppy.
-	{
-		jumpModifier = 20.0f;
-		character.setPosition((character.getPosition() + Vector2f(0.0f, -3.0f - jumpModifier)));
-		jumpCheck = true;
-		touchGround = false;
-		jumpTimer++;
-	}
-
-	if (jumpCheck) // Jos hahmo on hyppyanimaatiossa.
-	{
-		jumpModifier *= 0.88f;
-		character.setPosition((character.getPosition() + Vector2f(0.0f, -3.0f - jumpModifier)));
-		jumpTimer++;
-		if (jumpTimer >= 10.0f)
-		{
-			jumpCheck = false;
-			jumpModifier = 20.0f;
+			jumpTicks = 0.0f;
 			jumpTimer = 0.0f;
 		}
 	}
 
-	/*if (RNG::Chance(50)) // ES pärisee
+	// Hyppäämislogiikka.
+	if (Keyboard::isKeyPressed(Keyboard::Space) && !jumpCheck && touchGround)
+	{
+		jumpModifier = character.jumpPower;
+		character.sprite.setPosition((character.sprite.getPosition() + Vector2f(character.jumpThrust, -3.0f - jumpModifier)));
+		jumpCheck = true;
+		touchGround = false;
+		jumpTimer += deltaTime;
+		jumpTicks++;
+	}
+
+	// Jos hahmo on hyppyanimaatiossa.
+	if (jumpCheck) 
+	{
+		jumpModifier *= 1.05f;
+		character.sprite.setPosition((character.sprite.getPosition() + Vector2f(character.jumpThrust, -3.0f - jumpModifier)));
+		jumpTimer += deltaTime;
+		jumpTicks++;
+		if (jumpTimer >= (character.jumpFloat * 0.5f))
+		{
+			jumpCheck = false;
+			jumpTimer = 0.0f;
+		}
+	}
+
+	// ES pärisee
+	if (RNG::Chance(50))
 		view.setRotation((float)RNG::Random(1));
 	else
-		view.setRotation(0.0f - (float)RNG::Random(1));*/
+		view.setRotation(0.0f - (float)RNG::Random(1));
 
-	//view.setCenter(Vector2f(view.getCenter().x + 2.0f, view.getCenter().y)); // Kameran scrollaus.
-	view.setCenter(Vector2f(character.getGlobalBounds().left + 200.0f, view.getCenter().y));
+	// Kameran scrollaus.
+	view.setCenter(Vector2f(character.sprite.getGlobalBounds().left + 200.0f, view.getCenter().y));
 
 	if ((int)view.getCenter().x % 500 == 0)
 	{
@@ -91,9 +106,9 @@ GameScene::~GameScene()
 
 void GameScene::StartPiece()
 {
-	character.setSize(Vector2f(10.0f, 50.0f)); // Testihahmo.
-	character.setPosition(200.0f, 500.0f);
-	character.setFillColor(Color::Green);
+	Capitalist capitalist;
+	character = capitalist;
+	character.sprite.setPosition(Vector2f(100.0f, 400.0f));
 
 	RectangleShape tempGround;
 	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaperä.

@@ -13,11 +13,12 @@ public:
 	~GameScene();
 
 private:
-	//Character character; // Peli-hahmo
-	sf::RectangleShape character; // Testihahmo.
+	Character character; // Peli-hahmo
+	//sf::RectangleShape character; // Testihahmo.
 
 	sf::Vector2f screenSize; // Ruudun koko kova koodattu lel.
 	float jumpTimer, jumpModifier, gravitation; // Spagetti timereita, korjataan Character classin myötä.
+	float jumpTicks;
 	bool jumpCheck, touchGround, windowCheck; // Korjataan Character classin myötä.
 	
 	sf::View view; // Ikkunan scrollaus.

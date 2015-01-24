@@ -7,6 +7,7 @@
 #include "Base\SceneSys.h"
 #include "GameScene.h"
 #include "BackgroundScene.h"
+#include "MoneyInterface.h"
 
 int main()
 {
@@ -24,10 +25,11 @@ int main()
 	srand((int)time(NULL));			// Alustetaan RNG seed.
 	window.setFramerateLimit(60);	// Limit the framerate to a maximum fixed frequency.
 
-	GameScene *game = new GameScene;
-	BackgroundScene *background = new BackgroundScene;
-	SceneSys::ChangeScene(background);
-	SceneSys::OpenScene(game);
+
+	SceneSys::ChangeScene(new BackgroundScene);
+	SceneSys::OpenScene(new GameScene);
+	SceneSys::OpenScene(new MoneyInterface);
+
 
 	while(window.isOpen())
 	{
