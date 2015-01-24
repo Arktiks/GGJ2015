@@ -3,7 +3,6 @@
 
 SoundMaster::SoundMaster()
 {
-	playing = false;
 }
 
 

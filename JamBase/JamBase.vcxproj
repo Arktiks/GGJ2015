@@ -103,6 +103,7 @@
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="SoundMaster.cpp" />
     <ClCompile Include="WalkingEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +124,7 @@
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Rock.h" />
+    <ClInclude Include="SoundMaster.h" />
     <ClInclude Include="WalkingEnemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
