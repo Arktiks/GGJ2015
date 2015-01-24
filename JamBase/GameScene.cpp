@@ -40,6 +40,9 @@ void GameScene::Update(float deltaTime, Event &events)
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
 		it->UpdateSprite(deltaTime);
 
+	//for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+		//it->sprite.setPosition(Vector2f((it->sprite.getPosition().x + character.GetSpeed());
+
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
 	character.sprite.getPosition().y + character.GetSpeedY()));
