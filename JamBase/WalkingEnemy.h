@@ -6,5 +6,4 @@ class WalkingEnemy : public Obstacle
 public:
 	WalkingEnemy();
 	~WalkingEnemy() {};
-	float speed;
 };

@@ -15,5 +15,5 @@ WalkingEnemy::WalkingEnemy()
 	animationTimer = 0.0f;
 	animationSmoothnes = 0.02f;
 
-	speed = 2.0f;
+	speed = 3.0f;
 }

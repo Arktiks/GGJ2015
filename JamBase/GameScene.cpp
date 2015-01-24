@@ -33,15 +33,17 @@ void GameScene::Draw(sf::RenderWindow &window)
 
 void GameScene::Update(float deltaTime, Event &events)
 {
-	// P‰ivitet‰‰n jumala-luokkaa
+	// P‰ivitet‰‰n jumala-luokkaa.
 	Gameboard::playerLocation = Vector2f(character.sprite.getGlobalBounds().left, character.sprite.getGlobalBounds().top);
 	Gameboard::gameLocation = Vector2f(view.getCenter().x, view.getCenter().y);
 
+	// P‰ivitet‰‰n obstacle animaatiot.
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
 		it->UpdateSprite(deltaTime);
 
-	//for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
-		//it->sprite.setPosition(Vector2f((it->sprite.getPosition().x + character.GetSpeed());
+	// P‰ivitet‰‰n Obstaclen "eteneminen".
+	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+		it->sprite.setPosition(Vector2f(it->sprite.getPosition().x - it->speed, it->sprite.getPosition().y));
 
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
@@ -49,9 +51,7 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	// Hahmon putoamisliike.
 	if (!touchSurface)
-	{
 		character.SetSpeedY(character.GetSpeedY() + character.gravity);
-	}
 	else
 		character.SetSpeedY(0.f);
 
@@ -80,7 +80,6 @@ void GameScene::Update(float deltaTime, Event &events)
 		PlatformSpawn();
 	}
 	std::cout <<"X: "<< character.sprite.getPosition().x <<"Y: " << character.sprite.getPosition().y<<std::endl;
-	
 }
 
 GameScene::~GameScene()
@@ -93,10 +92,10 @@ void GameScene::StartPiece()
 	character = capitalist;
 	character.sprite.setPosition(Vector2f(100.0f, 400.0f));
 
-	WalkingEnemy tempEnemy;
+	/*WalkingEnemy tempEnemy;
 	tempEnemy.sprite.setScale(0.3f, 0.3f);
 	tempEnemy.sprite.setPosition(500.f, 500.0f);
-	obstacles.push_back(tempEnemy);
+	obstacles.push_back(tempEnemy);*/
 
 	RectangleShape tempGround;
 	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaper‰.
@@ -174,6 +173,11 @@ void GameScene::PlatformSpawn()
 		}
 		case 1:
 		{
+			WalkingEnemy tempEnemy;
+			tempEnemy.sprite.setScale(0.25f, 0.25f);
+			tempEnemy.sprite.setPosition(character.sprite.getPosition().x + 2280.0f, 200.0f - tempEnemy.sprite.getGlobalBounds().height);
+			obstacles.push_back(tempEnemy);
+
 			Platform tempPlatta1;
 			tempPlatta1.SetTexture("JP");
 			tempPlatta1.sprite.setColor(sf::Color::Cyan);
