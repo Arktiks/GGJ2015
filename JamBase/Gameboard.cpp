@@ -4,6 +4,7 @@ sf::Vector2f Gameboard::gameLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2i Gameboard::windowSize = sf::Vector2i(1280, 800);
 int Gameboard::moneyAmount = 3;
 SoundMaster Gameboard::soundMaster = SoundMaster();
+bool Gameboard::characterIsDead = false;
 
 void Gameboard::loadSounds()
 {

@@ -11,6 +11,8 @@ public:
 	static sf::Vector2f gameLocation;
 	static sf::Vector2i windowSize;
 
+	static bool characterIsDead;
+
 	// Kapitalisti
 	static int moneyAmount;
 	static SoundMaster soundMaster;

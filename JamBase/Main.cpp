@@ -49,6 +49,15 @@ int main()
 		deltaConverter = deltaClock.restart(); // Kellosta saadaan aika sf::Time muodossa.
 		deltaTime = deltaConverter.asSeconds(); // Muutetaan sf::Time muoto floattiin.
 
+		if (Gameboard::characterIsDead)
+		{
+			SceneSys::CleanScenes();
+			SceneSys::ChangeScene(new BackgroundScene);
+			SceneSys::OpenScene(new GameScene);
+			SceneSys::OpenScene(new MoneyInterface);
+			Gameboard::characterIsDead = false;
+		}
+
 		SceneSys::Update(deltaTime, event); // P‰ivitet‰‰n avatut scenet.
 		SceneSys::Draw(window); // Piirret‰‰n scenet.
 	}
