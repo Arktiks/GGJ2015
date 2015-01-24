@@ -174,7 +174,7 @@ void GameScene::PlatformSpawn()
 			tempPlatta3.SetTexture("JP");
 			tempPlatta3.sprite.setColor(sf::Color::Cyan);
 			tempPlatta3.sprite.setTextureRect(sf::IntRect(100, 33, 100, 40));
-			tempPlatta3.sprite.setPosition(character.sprite.getPosition().x + 300 + 1280, 600);
+			tempPlatta3.sprite.setPosition(character.sprite.getPosition().x + 300 + 1280, 500);
 			Platform tempPlatta4;
 			tempPlatta4.SetTexture("JP");
 			tempPlatta4.sprite.setColor(sf::Color::Cyan);
@@ -184,7 +184,7 @@ void GameScene::PlatformSpawn()
 			tempPlatta5.SetTexture("JP");
 			tempPlatta5.sprite.setColor(sf::Color::Cyan);
 			tempPlatta5.sprite.setTextureRect(sf::IntRect(100, 33, 100, 40));
-			tempPlatta5.sprite.setPosition(character.sprite.getPosition().x + 800 + 1280, 600);
+			tempPlatta5.sprite.setPosition(character.sprite.getPosition().x + 800 + 1280, 500);
 			Platform tempPlatta6;
 			tempPlatta6.SetTexture("JP");
 			tempPlatta6.sprite.setColor(sf::Color::Cyan);
@@ -204,46 +204,22 @@ void GameScene::PlatformSpawn()
 			Platform tempPlatta1;
 			tempPlatta1.SetTexture("JP");
 			tempPlatta1.sprite.setColor(sf::Color::Cyan);
-			tempPlatta1.sprite.setTextureRect(sf::IntRect(100, 33, 370, 40));
-			tempPlatta1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 200);
+			tempPlatta1.sprite.setTextureRect(sf::IntRect(100, 33, 640, 40));
+			tempPlatta1.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 200);
 			Platform tempPlatta2;
 			tempPlatta2.SetTexture("JP");
 			tempPlatta2.sprite.setColor(sf::Color::Cyan);
 			tempPlatta2.sprite.setTextureRect(sf::IntRect(100, 33, 400, 40));
-			tempPlatta2.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 200);
+			tempPlatta2.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 200);
 			Platform tempPlatta3;
 			tempPlatta3.SetTexture("JP");
 			tempPlatta3.sprite.setColor(sf::Color::Cyan);
-			tempPlatta3.sprite.setTextureRect(sf::IntRect(100, 33, 440, 40));
-			tempPlatta3.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 400);
-			Platform tempPlatta4;
-			tempPlatta4.SetTexture("JP");
-			tempPlatta4.sprite.setColor(sf::Color::Cyan);
-			tempPlatta4.sprite.setTextureRect(sf::IntRect(100, 33, 200, 40));
-			tempPlatta4.sprite.setPosition(character.sprite.getPosition().x + 490 + 1280, 400);
-			Platform tempPlatta5;
-			tempPlatta5.SetTexture("JP");
-			tempPlatta5.sprite.setColor(sf::Color::Cyan);
-			tempPlatta5.sprite.setTextureRect(sf::IntRect(100, 33, 350, 40));
-			tempPlatta5.sprite.setPosition(character.sprite.getPosition().x + 790 + 1280, 400);
-			Platform tempPlatta6;
-			tempPlatta6.SetTexture("JP");
-			tempPlatta6.sprite.setColor(sf::Color::Cyan);
-			tempPlatta6.sprite.setTextureRect(sf::IntRect(100, 33, 220, 40));
-			tempPlatta6.sprite.setPosition(character.sprite.getPosition().x + 50 + 1280, 600);
-			Platform tempPlatta7;
-			tempPlatta7.SetTexture("JP");
-			tempPlatta7.sprite.setColor(sf::Color::Cyan);
-			tempPlatta7.sprite.setTextureRect(sf::IntRect(100, 33, 200, 40));
-			tempPlatta7.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 600);
-
+			tempPlatta3.sprite.setTextureRect(sf::IntRect(100, 33, 640, 40));
+			tempPlatta3.sprite.setPosition(character.sprite.getPosition().x + 640 + 1280, 400);
+		
 			platformVector.push_back(tempPlatta1);
 			platformVector.push_back(tempPlatta2);
 			platformVector.push_back(tempPlatta3);
-			platformVector.push_back(tempPlatta4);
-			platformVector.push_back(tempPlatta5);
-			platformVector.push_back(tempPlatta6);
-			platformVector.push_back(tempPlatta7);
 			break;
 		}
 		case 3:
@@ -325,10 +301,9 @@ void GameScene::PlatformUpdate()
 {
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end();)
 	{
-		if (it->sprite.getPosition().x <= character.sprite.getPosition().x - 400)
+		if (it->sprite.getPosition().x <= character.sprite.getPosition().x - 1400)
 		{
 			std::cout << "siitäs sait" << std::endl;
-			(*it)->~Platform();
 			it = platformVector.erase(it);
 		}
 		else
