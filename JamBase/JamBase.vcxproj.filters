@@ -21,6 +21,9 @@
     <Filter Include="Scenes\User Interfaces">
       <UniqueIdentifier>{bd9c00e3-57b5-4ec8-8fe6-0b6b9a955e00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Obstacles">
+      <UniqueIdentifier>{39338722-2169-400b-b305-94457aa80b3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -59,6 +62,12 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>Obstacles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SceneParent.h">
@@ -94,6 +103,14 @@
     <ClInclude Include="Capitalist.h">
       <Filter>Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Obstacle.h">
+      <Filter>Obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>Obstacles</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
