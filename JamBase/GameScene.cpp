@@ -78,7 +78,7 @@ void GameScene::Update(float deltaTime, Event &events)
 	{
 		Piece1();
 	}
-	std::cout << character.sprite.getPosition().x << std::endl;
+	std::cout <<"X: "<< character.sprite.getPosition().x <<"Y: " << character.sprite.getPosition().y<<std::endl;
 }
 
 GameScene::~GameScene()
@@ -128,30 +128,31 @@ void GameScene::PlatformSpawn()
 }
 bool GameScene::CheckPlatformCollision()
 {
+	bool temp = false;
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
 	{
-		bool temp = false;
 		if ((*it).sprite.getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
 		{
 			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
-				character.sprite.getPosition().y - 0.0f));
+				(*it).sprite.getGlobalBounds().top - character.sprite.getGlobalBounds().height));
+
 			temp = true;
 		}
-		return temp;
 	}
+	return temp;
 }
 
 bool GameScene::CheckGroundCollision()
 {
+	bool temp = false;
 	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 	{
-		bool temp = false;
 		if ((*it).getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
 		{
 			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
 				(*it).getGlobalBounds().top - character.sprite.getGlobalBounds().height));
 			temp = true;
 		}
-		return temp;
 	}
+	return temp;
 }
