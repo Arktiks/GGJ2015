@@ -1,4 +1,5 @@
 #include "Gameboard.h"
+#include "RNG.h"
 sf::Vector2f Gameboard::playerLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2f Gameboard::gameLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2i Gameboard::windowSize = sf::Vector2i(1280, 800);
@@ -36,7 +37,21 @@ void Gameboard::loadSounds()
 	soundMaster.AddSound("whistle", "Sounds/whistle.wav");
 
 	// Testi
-	soundMaster.setCurrentMusic("music3");
+	int tempRNG = RNG::Random(2);
+	{
+		if (tempRNG == 0)
+		{
+			soundMaster.setCurrentMusic("music1");
+		}
+		else if (tempRNG == 1)
+		{
+			soundMaster.setCurrentMusic("music2");
+		}
+		else
+		{
+			soundMaster.setCurrentMusic("music3");
+		}
+	}
 	soundMaster.currentMusic->setLoop(true);
 	soundMaster.currentMusic->play();
 }

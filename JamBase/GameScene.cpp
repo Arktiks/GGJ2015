@@ -343,3 +343,29 @@ void GameScene::PlatformUpdate()
 			it++;	
 	}
 }
+
+void GameScene::UpdateProjectiles()
+{
+	for (int i = 0; i < projectiles.size(); i++)
+	{
+		if (projectiles[i].type == BULLET)
+		{
+			projectiles[i].sprite.setPosition(projectiles[i].sprite.getPosition().x + 2,
+				projectiles[i].sprite.getPosition().y);
+		}
+		for (int j = 0; j < obstacles.size(); j++)
+		{
+			if (obstacles[j].sprite.getGlobalBounds().intersects(projectiles[i].sprite.getGlobalBounds()));
+			{
+				obstacles[j].isDead = true;
+				projectiles[i].isDead = true;
+			}
+		}
+
+		if (projectiles[i].sprite.getPosition().x > character.sprite.getPosition().x + 1200)
+		{
+			//delete
+		}
+
+	}
+}

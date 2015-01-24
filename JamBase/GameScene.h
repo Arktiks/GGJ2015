@@ -5,6 +5,7 @@
 #include "Platform.h"
 #include "Obstacle.h"
 #include "SoundMaster.h"
+#include "Projectile.h"
 
 class GameScene :
 	public SceneParent
@@ -26,7 +27,9 @@ private:
 	std::vector<sf::RectangleShape> groundVector;
 	std::vector<Platform> platformVector; // platformit
 	std::vector<Obstacle> obstacles;
+	std::vector<Projectile> projectiles;
 
+	void UpdateProjectiles();
 	void StartPiece();
 	void Piece1();
 	void PlatformSpawn();
