@@ -14,7 +14,7 @@ sf::SoundBuffer* SoundMaster::AddSound(std::string name, std::string filepath)
 {
 	sf::SoundBuffer* buffer = new sf::SoundBuffer;
 
-	if (!buffer->loadFromFile("sounds/laava.wav"))
+	if (!buffer->loadFromFile(filepath))
 	{
 		std::cout << "Sound loading fucked up" << std::endl;
 	}
@@ -33,7 +33,7 @@ sf::SoundBuffer* SoundMaster::FindSound(std::string name)
 void SoundMaster::LoadMusic(std::string name, std::string filepath)
 {
 	sf::Music* music = new sf::Music;
-	if (!music->openFromFile("music1.wav"))
+	if (!music->openFromFile(filepath))
 	{
 		std::cout << "Music loading fucked up" << std::endl;
 	}

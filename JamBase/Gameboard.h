@@ -1,6 +1,6 @@
 #pragma once
 #include "SFML\System\Vector2.hpp"
-
+#include "SoundMaster.h"
 class Gameboard
 {
 public:
@@ -13,7 +13,8 @@ public:
 
 	// Kapitalisti
 	static int moneyAmount;
-
+	static SoundMaster soundMaster;
+	static void loadSounds();
 	//void SetWindowSize(sf::Vector2i size);
 	//sf::Vector2i GetWindowSize();
 };

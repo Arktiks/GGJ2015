@@ -4,7 +4,7 @@
 #include "Character.h"
 #include "Platform.h"
 #include "Obstacle.h"
-
+#include "SoundMaster.h"
 class GameScene :
 	public SceneParent
 {

@@ -13,6 +13,7 @@ GameScene::GameScene() : touchSurface(false), gravitation(1.2f),
 windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
 {
 	StartPiece();
+	Gameboard::loadSounds();
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
 	PlatformSpawn();
