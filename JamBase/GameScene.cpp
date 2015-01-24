@@ -81,7 +81,7 @@ void GameScene::Update(float deltaTime, Event &events)
 		//Piece1();
 		PlatformSpawn();
 	}
-	std::cout <<"X: "<< character.sprite.getPosition().x <<"Y: " << character.sprite.getPosition().y<<std::endl;
+	//std::cout <<"X: "<< character.sprite.getPosition().x <<"Y: " << character.sprite.getPosition().y<<std::endl;
 }
 
 GameScene::~GameScene()

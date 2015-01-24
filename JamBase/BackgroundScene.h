@@ -9,9 +9,11 @@ public:
 	BackgroundScene();
 	void Draw(sf::RenderWindow &window);
 	void Update(float deltaTime, sf::Event &events);
-	~BackgroundScene();
+	~BackgroundScene() {};
 
 private:
 	sf::Sprite back, back2;
 	float backSpeed;
+	std::vector<sf::Sprite> backPlatforms;
+	float platformTimer;
 };
