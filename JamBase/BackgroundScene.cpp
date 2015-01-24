@@ -47,7 +47,7 @@ void BackgroundScene::Update(float deltaTime, Event &events)
 		tempPlatform.animationSmoothnes = 0.03f;
 		tempPlatform.texture = R::LoadTexture("Flare");
 		tempPlatform.sprite.setTexture(*tempPlatform.texture);
-		tempPlatform.sprite.setScale(1.5f, 1.5f);
+		tempPlatform.sprite.setScale(2.0f, 2.0f);
 		tempPlatform.sprite.setPosition(Gameboard::playerLocation.x + (float)RNG::Between(1000, 1400),
 			(float)RNG::Between(100, 700));
 		//tempPlatform.setColor(Color(255, 255, 255, 100));
