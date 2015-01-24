@@ -5,8 +5,7 @@ Character::Character() : speed(0.0f), health(0.0f), boosting(false), onFire(fals
 }
 
 Character::Character(float tempSpeed, float tempHealth, sf::FloatRect tempHitBox)
-	: speed(tempSpeed), health(tempHealth), hitBox(tempHitBox), onFire(false), boosting(false),
-	weight(0.0f), jumpPower(0.0f)
+	: speed(tempSpeed), health(tempHealth), hitBox(tempHitBox), onFire(false), boosting(false)
 {
 }
 

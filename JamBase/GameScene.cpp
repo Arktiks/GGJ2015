@@ -7,8 +7,8 @@
 #include "Capitalist.h"
 using namespace sf; 
 
-GameScene::GameScene() : jumpCheck(false), jumpTimer(0.0f), touchGround(false), jumpModifier(1.0f),
-gravitation(1.2f), windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), jumpTicks(0.0f)
+GameScene::GameScene() : touchSurface(false), gravitation(1.2f), 
+windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
 {
 	StartPiece();
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
@@ -40,68 +40,34 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
-		character.sprite.getPosition().y));
+		character.sprite.getPosition().y + character.GetSpeedY()));
 
 	// Hahmon putoamisliike.
-	if (!jumpCheck && !touchGround) 
+	if (!touchSurface)
 	{
-		character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
-			character.sprite.getPosition().y + character.weight + jumpTicks * 0.25f));
+		character.SetSpeedY(character.GetSpeedY() + character.gravity);
 	}
+	else
+		character.SetSpeedY(0.f);
+
 	// Pusketaan hahmoa ylös jos koskee platformiin.
-	
 	// Pusketaan hahmoa ylös jos koskee maahan.
-	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
-	{
-		if ((*it).getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
-		{
-			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
-				character.sprite.getPosition().y - 0.f));
-			touchGround = true;
-			jumpCheck = false;
-			jumpTicks = 0.0f;
-			jumpTimer = 0.0f;
-		}
-		else
-			touchGround = false;
-	}
-	PlatformUpdate();
+	if (CheckPlatformCollision() || CheckGroundCollision())
+		touchSurface = true;
+	else
+		touchSurface = false;
 	
 	// Hyppäämislogiikka.
-	if (Keyboard::isKeyPressed(Keyboard::Space) && !jumpCheck && touchGround)
+	if (Keyboard::isKeyPressed(Keyboard::Space) && touchSurface)
 	{
-		jumpModifier = character.jumpPower;
-		character.sprite.setPosition((character.sprite.getPosition() + Vector2f(character.jumpThrust, -3.0f - jumpModifier)));
-		jumpCheck = true;
-		touchGround = false;
-		jumpTimer += deltaTime;
-		jumpTicks++;
-	}
-
-	if (!jumpCheck && touchPlatform)
-	{
-
-		touchGround = false;
-	}
-
-	// Jos hahmo on hyppyanimaatiossa.
-	if (jumpCheck)
-	{
-		jumpModifier *= 1.05f;
-		character.sprite.setPosition((character.sprite.getPosition() + Vector2f(character.jumpThrust, -3.0f - jumpModifier)));
-		jumpTimer += deltaTime;
-		jumpTicks++;
-		if (jumpTimer >= (character.jumpFloat * 0.5f))
-		{
-			jumpCheck = false;
-			jumpTimer = 0.0f;
-		}
+		character.Jump();
+		touchSurface = false;
 	}
 
 	// ES pärisee
 	// pärinää vahennetty
-	else if (RNG::Chance(50))
-		;// view.setRotation(view.getRotation() + 1);
+	else if (RNG::Chance(50));
+	// view.setRotation(view.getRotation() + 1);
 	//else
 		//view.setRotation(0.0f - (float)RNG::Random(1));
 
@@ -160,20 +126,32 @@ void GameScene::PlatformSpawn()
 		platformVector.push_back(tempPlatta);
 	}
 }
-void GameScene::PlatformUpdate()
+bool GameScene::CheckPlatformCollision()
 {
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
 	{
+		bool temp = false;
 		if ((*it).sprite.getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
 		{
 			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
 				character.sprite.getPosition().y - 0.0f));
-			touchGround = true;
-			jumpCheck = false;
-			jumpTicks = 0.0f;
-			jumpTimer = 0.0f;
+			temp = true;
 		}
-		else
-			touchPlatform = false;
+		return temp;
+	}
+}
+
+bool GameScene::CheckGroundCollision()
+{
+	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
+	{
+		bool temp = false;
+		if ((*it).getGlobalBounds().intersects(character.sprite.getGlobalBounds()))
+		{
+			character.sprite.setPosition(Vector2f((character.sprite.getPosition().x),
+				(*it).getGlobalBounds().top - character.sprite.getGlobalBounds().height));
+			temp = true;
+		}
+		return temp;
 	}
 }

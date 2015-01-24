@@ -19,9 +19,8 @@ private:
 	//sf::RectangleShape character; // Testihahmo.
 
 	sf::Vector2f screenSize; // Ruudun koko kova koodattu lel.
-	float jumpTimer, jumpModifier, gravitation; // Spagetti timereita, korjataan Character classin myötä.
-	float jumpTicks;
-	bool jumpCheck, touchGround, windowCheck, touchPlatform; // Korjataan Character classin myötä.
+	float gravitation; // Spagetti timereita, korjataan Character classin myötä.
+	bool windowCheck, touchSurface; // Korjataan Character classin myötä.
 	
 	sf::View view; // Ikkunan scrollaus.
 	std::vector<sf::RectangleShape> groundVector;
@@ -31,5 +30,6 @@ private:
 	void StartPiece();
 	void Piece1();
 	void PlatformSpawn();
-	void PlatformUpdate();
+	bool CheckPlatformCollision();
+	bool CheckGroundCollision();
 };

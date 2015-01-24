@@ -4,10 +4,9 @@ using namespace sf;
 
 Capitalist::Capitalist()
 {
-	weight = 12.0f;
-	jumpPower = 35.0f;
-	jumpThrust = 0.0f;
-	jumpFloat = 0.25f;
+	gravity = 0.4905f;
+	jumpSpeed = 25.0f;
+	speedY = 0.0f;
 	speed = 3.0f;
 	health = 0.0f;
 	boosting = false;
