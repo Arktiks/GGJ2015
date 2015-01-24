@@ -30,6 +30,7 @@ private:
 	void StartPiece();
 	void Piece1();
 	void PlatformSpawn();
+	void PlatformUpdate();
 	bool CheckPlatformCollision();
 	bool CheckGroundCollision();
 };

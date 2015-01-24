@@ -4,5 +4,6 @@
 void GameObject::SetTexture(std::string imageName)
 {
 	texture = R::LoadTexture(imageName);
+	texture->setRepeated(true);
 	sprite.setTexture(*texture);
 }
