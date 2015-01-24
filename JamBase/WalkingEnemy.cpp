@@ -13,6 +13,6 @@ WalkingEnemy::WalkingEnemy()
 	frames = 5;
 	frameCount = 0;
 	animationTimer = 0.0f;
-	animationSmoothnes = 1.0f;
+	animationSmoothnes = 0.02f;
 	animationRepeat = false;
 }

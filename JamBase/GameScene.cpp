@@ -5,6 +5,7 @@
 #include "Base\RNG.h"
 #include "Gameboard.h"
 #include "Capitalist.h"
+#include "WalkingEnemy.h"
 using namespace sf; 
 
 GameScene::GameScene() : touchSurface(false), gravitation(1.2f), 
@@ -21,6 +22,9 @@ void GameScene::Draw(sf::RenderWindow &window)
 	for (std::vector<RectangleShape>::iterator it = groundVector.begin(); it != groundVector.end(); it++)
 		window.draw(*it); // Piirret‰‰n scenet j‰rjestyksess‰.
 
+	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+		window.draw(it->sprite);
+
 	window.draw(character.sprite);
 	window.setView(view);
 	for (std::vector<Platform>::iterator it = platformVector.begin(); it != platformVector.end(); it++)
@@ -29,10 +33,12 @@ void GameScene::Draw(sf::RenderWindow &window)
 
 void GameScene::Update(float deltaTime, Event &events)
 {
-
 	// P‰ivitet‰‰n jumala-luokkaa
 	Gameboard::playerLocation = Vector2f(character.sprite.getGlobalBounds().left, character.sprite.getGlobalBounds().top);
 	Gameboard::gameLocation = Vector2f(view.getCenter().x, view.getCenter().y);
+
+	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+		it->UpdateSprite(deltaTime);
 
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
@@ -83,6 +89,11 @@ void GameScene::StartPiece()
 	Capitalist capitalist;
 	character = capitalist;
 	character.sprite.setPosition(Vector2f(100.0f, 400.0f));
+
+	WalkingEnemy tempEnemy;
+	tempEnemy.sprite.setScale(0.3f, 0.3f);
+	tempEnemy.sprite.setPosition(500.f, 500.0f);
+	obstacles.push_back(tempEnemy);
 
 	RectangleShape tempGround;
 	tempGround.setSize(Vector2f(screenSize.x, 50.0f)); // Alustetaan maaper‰.

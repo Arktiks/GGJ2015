@@ -21,12 +21,25 @@ void GameObject::UpdateSprite(float deltaTime)
 
 		if (animationRepeat)
 			frameCount++;
+		else if (!animationBacktrack && !animationRepeat)
+			frameCount++;
 
 		if (frameCount > frames && animationRepeat)
 			frameCount = 0;
-		else if (frameCount > frames && !animationRepeat)
+		else if (animationBacktrack && frameCount < frames)
+		{
+			if (frameCount < 0)
+			{
+				frameCount = 0;
+				animationBacktrack = false;
+			}
+			else
+				frameCount--;
+		}
+		else if (frameCount > frames && !animationRepeat && !animationBacktrack)
+		{
 			frameCount -= 2;
-
-
+			animationBacktrack = true;
+		}
 	}
 }

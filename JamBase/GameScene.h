@@ -3,6 +3,7 @@
 #include "SceneParent.h"
 #include "Character.h"
 #include "Platform.h"
+#include "Obstacle.h"
 
 class GameScene :
 	public SceneParent
@@ -25,6 +26,7 @@ private:
 	sf::View view; // Ikkunan scrollaus.
 	std::vector<sf::RectangleShape> groundVector;
 	std::vector<Platform> platformVector; // platformit
+	std::vector<Obstacle> obstacles;
 	//std::vector<enemies> enemyVector; viholliset
 
 	void StartPiece();
