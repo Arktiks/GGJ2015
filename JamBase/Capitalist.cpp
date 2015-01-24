@@ -14,7 +14,7 @@ Capitalist::Capitalist()
 	texture = R::LoadTexture("Fireman_run");
 	texture->setRepeated(true);
 	sprite.setTexture(*texture);
-	sprite.setScale(Vector2f(2.5f, 2.5f));
+	sprite.setScale(Vector2f(2.0f, 2.0f));
 
 	frames = 5;
 	frameCount = 0;

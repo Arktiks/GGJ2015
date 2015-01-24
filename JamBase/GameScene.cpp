@@ -6,11 +6,12 @@
 #include "Gameboard.h"
 #include "Capitalist.h"
 #include "WalkingEnemy.h"
+#include "WalkingEnemy2.h"
 #include "Rock.h"
 using namespace sf; 
 
-GameScene::GameScene() : touchSurface(false), 
-windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f))
+GameScene::GameScene() : touchSurface(false), protectionTimer(0.0f),
+windowCheck(false), screenSize(Vector2f(1280.0f, 800.0f)), zombieSpawner(0.0f), damageProtection(false)
 {
 	view.reset(FloatRect(0.0f, 0.0f, 1280.0f, 800.0f)); // Kameran alustus windowin mukaan.
 	view.rotate(0.0f);
@@ -47,7 +48,22 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	// P‰ivitet‰‰n Obstaclen "eteneminen".
 	for (std::vector<Obstacle>::iterator it = obstacles.begin(); it != obstacles.end(); it++)
+	{
 		it->sprite.setPosition(Vector2f(it->sprite.getPosition().x - it->speed, it->sprite.getPosition().y));
+		if (it->sprite.getGlobalBounds().intersects(character.sprite.getGlobalBounds())
+			&& !damageProtection)
+		{
+			Gameboard::moneyAmount--;
+			damageProtection = true;
+		}
+	}
+
+	if (damageProtection)
+	{
+		protectionTimer += deltaTime;
+		if (protectionTimer >= 1.0f)
+			damageProtection = false;
+	}
 
 	// Hahmon liike.
 	character.sprite.setPosition(Vector2f((character.sprite.getPosition().x + character.GetSpeed()),
@@ -79,15 +95,17 @@ void GameScene::Update(float deltaTime, Event &events)
 	view.setCenter(Vector2f(character.sprite.getGlobalBounds().left + 200.0f, view.getCenter().y));
 
 	if ((int)view.getCenter().x % 500 == 0)
-	{
-		//Piece1();
 		PlatformSpawn();
-	}
-	//std::cout <<"X: "<< character.sprite.getPosition().x <<"Y: " << character.sprite.getPosition().y<<std::endl;
-}
 
-GameScene::~GameScene()
-{
+	zombieSpawner += deltaTime;
+	if (zombieSpawner >= 0.3f)
+	{
+		WalkingEnemy2 tempEnemy;
+		tempEnemy.sprite.setScale(2.0f, 2.0f);
+		tempEnemy.sprite.setPosition(character.sprite.getGlobalBounds().left + 1300.0f, 730.0f);
+		obstacles.push_back(tempEnemy);
+		zombieSpawner = 0.0f;
+	}
 }
 
 void GameScene::StartPiece()
@@ -96,11 +114,6 @@ void GameScene::StartPiece()
 	character = capitalist;
 	character.createSounds();
 	character.sprite.setPosition(Vector2f(100.0f, 400.0f));
-
-	/*WalkingEnemy tempEnemy;
-	tempEnemy.sprite.setScale(0.3f, 0.3f);
-	tempEnemy.sprite.setPosition(500.f, 500.0f);
-	obstacles.push_back(tempEnemy);*/
 
 	RectangleShape tempGround;
 	tempGround.setSize(Vector2f(screenSize.x * 2, 30.0f)); // Alustetaan maaper‰.
@@ -115,18 +128,11 @@ void GameScene::Piece1()
 	tempGround.setFillColor(Color::Blue);
 	tempGround.setPosition(Vector2f(view.getCenter().x + 630.0f, screenSize.y - tempGround.getSize().y));
 	groundVector.push_back(tempGround);
-
-	CircleShape aurinko(10.0f, 30u);
-	aurinko.setFillColor(Color::Magenta);
-	aurinko.setPosition(Vector2f(view.getCenter().x, screenSize.y - 400.0f));
-	//groundVector.push_back(aurinko);
-
-//	std::cout << character.sprite.getPosition().x << std::endl;
 }
 
 void GameScene::PlatformSpawn()
 {
-	int choice = RNG::Random(1);
+	int choice = RNG::Random(2);
 	switch (choice)
 	{
 	case 0:
@@ -138,13 +144,20 @@ void GameScene::PlatformSpawn()
 
 		Platform tempPlat2;
 		tempPlat2.SetTexture("taso2");
-		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 540, 25));
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 740 + 1280, 280);
 
 		Platform tempPlat3;
 		tempPlat3.SetTexture("taso2");
 		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 140, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x - 200 + 1280, 400);
+
+		if (RNG::Chance(10))
+		{
+			Rock tempEnemy;
+			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 300, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 10);
+			obstacles.push_back(tempEnemy);
+		}
 
 		Platform tempPlat4;
 		tempPlat4.SetTexture("taso2");
@@ -155,6 +168,13 @@ void GameScene::PlatformSpawn()
 		tempPlat5.SetTexture("taso2");
 		tempPlat5.sprite.setTextureRect(sf::IntRect(0, 0, 340, 25));
 		tempPlat5.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 600);
+
+		if (RNG::Chance(10))
+		{
+			WalkingEnemy tempEnemy;
+			tempEnemy.sprite.setPosition(tempPlat5.sprite.getGlobalBounds().left + 1248, tempPlat5.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 4);
+			obstacles.push_back(tempEnemy);
+		}
 
 		Platform tempPlat6;
 		tempPlat6.SetTexture("taso2");
@@ -183,13 +203,20 @@ void GameScene::PlatformSpawn()
 
 		Platform tempPlat2;
 		tempPlat2.SetTexture("taso2");
-		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 600, 25));
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat2.sprite.setPosition(character.sprite.getPosition().x + 800 + 1280, 300);
 
 		Platform tempPlat3;
 		tempPlat3.SetTexture("taso2");
-		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 700, 25));
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 200 + 1280, 500);
+
+		if (RNG::Chance(10))
+		{
+			WalkingEnemy tempEnemy;
+			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 448, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 4);
+			obstacles.push_back(tempEnemy);
+		}
 
 		Platform tempPlat4;
 		tempPlat4.SetTexture("taso2");
@@ -212,7 +239,7 @@ void GameScene::PlatformSpawn()
 	{
 		Platform tempPlat1;
 		tempPlat1.SetTexture("taso2");
-		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 500, 25));
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat1.sprite.setPosition(character.sprite.getPosition().x + 0 + 1280, 240);
 
 		Platform tempPlat2;
@@ -222,8 +249,15 @@ void GameScene::PlatformSpawn()
 
 		Platform tempPlat3;
 		tempPlat3.SetTexture("taso2");
-		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 750, 25));
+		tempPlat1.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat3.sprite.setPosition(character.sprite.getPosition().x + 650 + 1280, 400);
+
+		if (RNG::Chance(10))
+		{
+			WalkingEnemy tempEnemy;
+			tempEnemy.sprite.setPosition(tempPlat3.sprite.getGlobalBounds().left + 648, tempPlat3.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 4);
+			obstacles.push_back(tempEnemy);
+		}
 
 		Platform tempPlat4;
 		tempPlat4.SetTexture("taso2");
@@ -237,9 +271,15 @@ void GameScene::PlatformSpawn()
 
 		Platform tempPlat6;
 		tempPlat6.SetTexture("taso2");
-		tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 500, 25));
+		tempPlat6.sprite.setTextureRect(sf::IntRect(0, 0, 448, 25));
 		tempPlat6.sprite.setPosition(character.sprite.getPosition().x + 1000 + 1280, 150);
 
+		if (RNG::Chance(10))
+		{
+			Rock tempEnemy;
+			tempEnemy.sprite.setPosition(tempPlat6.sprite.getGlobalBounds().left + 200, tempPlat6.sprite.getGlobalBounds().top - tempEnemy.sprite.getGlobalBounds().height + 10);
+			obstacles.push_back(tempEnemy);
+		}
 
 		platformVector.push_back(tempPlat1);
 		platformVector.push_back(tempPlat2);
@@ -254,7 +294,6 @@ void GameScene::PlatformSpawn()
 		break;
 	}
 	}
-
 }
 
 bool GameScene::CheckPlatformCollision()
@@ -301,7 +340,6 @@ void GameScene::PlatformUpdate()
 			it = platformVector.erase(it);
 		}
 		else
-			it++;
-			
+			it++;	
 	}
 }
