@@ -17,9 +17,16 @@ void GameObject::UpdateSprite(float deltaTime)
 		int tempSpriteWidth = texture->getSize().x / frames;
 		int tempSpriteHeight = texture->getSize().y;
 		sprite.setTextureRect(IntRect(frameCount * tempSpriteWidth, 0, tempSpriteWidth, tempSpriteHeight));
-		frameCount++;
 		animationTimer = 0.0f;
-		if (frameCount > frames)
+
+		if (animationRepeat)
+			frameCount++;
+
+		if (frameCount > frames && animationRepeat)
 			frameCount = 0;
+		else if (frameCount > frames && !animationRepeat)
+			frameCount -= 2;
+
+
 	}
 }

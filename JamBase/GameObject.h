@@ -5,7 +5,7 @@ class GameObject
 {
 public:
 	GameObject()
-		: texture(NULL), frames(0), animationRepeat(false), frameCount(0),
+		: texture(NULL), frames(0), animationRepeat(true), frameCount(0),
 		animationTimer(0.0f), animationSmoothnes(0.0f) {};
 	
 	virtual void SetTexture(std::string imageName); // Voi vaihdella luokittain.
