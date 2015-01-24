@@ -10,9 +10,10 @@ WalkingEnemy::WalkingEnemy()
 	texture = R::LoadTexture("slime_sheet");
 	sprite.setTexture(*texture);
 
-	frames = 5;
+	frames = 7;
 	frameCount = 0;
 	animationTimer = 0.0f;
-	animationSmoothnes = 1.0f;
-	animationRepeat = false;
+	animationSmoothnes = 0.02f;
+
+	speed = 3.0f;
 }

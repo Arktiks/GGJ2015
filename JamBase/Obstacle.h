@@ -4,8 +4,8 @@
 class Obstacle : public GameObject
 {
 public:
-	Obstacle() : HP(0), damage(0), isDead(false), onFire(false) {};
-	Obstacle(int hp, int dmg) : HP(hp), damage(dmg), isDead(false), onFire(false) {};
+	Obstacle() : HP(0), damage(0), isDead(false), onFire(false), speed(0.0f) {};
+	Obstacle(int hp, int dmg) : HP(hp), damage(dmg), isDead(false), onFire(false), speed(0.0f) {};
 
 	virtual void TakeDamage(int dmg);
 	virtual ~Obstacle() {};
@@ -14,4 +14,5 @@ public:
 	bool onFire;
 	int HP;
 	int damage;
+	float speed;
 };
