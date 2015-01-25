@@ -1,7 +1,5 @@
 #include "MoneyInterface.h"
-#include <iostream>
 #include "SFML\System\Vector2.hpp"
-#include "Base\R.h"
 #include "Gameboard.h"
 #include <sstream>
 #include "RNG.h"
@@ -10,6 +8,7 @@ using namespace sf;
 
 MoneyInterface::MoneyInterface() : moneyMeter(Vector2f(0.0f, 20.0f))
 {
+<<<<<<< HEAD
 moneyMeter.setFillColor(Color::Red);
 	fontSize = 128;
 	characterName.setCharacterSize(fontSize);
@@ -17,11 +16,15 @@ moneyMeter.setFillColor(Color::Red);
 	characterName.setString("asd ");
 	characterName.setColor(Color::White);
 	characterName.setFont(*R::LoadFont("DamagedSataLight"));
+=======
+	moneyMeter.setFillColor(Color::Red);
+>>>>>>> origin/master
 }
 
 void MoneyInterface::Draw(sf::RenderWindow &window)
 {
 	window.draw(moneyMeter);
+<<<<<<< HEAD
 	
 	
 
@@ -57,6 +60,8 @@ void MoneyInterface::Draw(sf::RenderWindow &window)
 		window.draw(characterName);
 	}
 
+=======
+>>>>>>> origin/master
 }
 
 void MoneyInterface::Update(float deltaTime, Event &events)
@@ -64,6 +69,7 @@ void MoneyInterface::Update(float deltaTime, Event &events)
 	moneyMeter.setSize(Vector2f(100.0f * (float)Gameboard::moneyAmount, 20.0f));
 	moneyMeter.setPosition(Vector2f(Gameboard::gameLocation.x - 600.0f,
 		Gameboard::gameLocation.y - 380.0f));
+<<<<<<< HEAD
 	std::string Result;   
 	int number;// string which will contain the result
 	if (lastKill > Gameboard::swordCounter)
@@ -87,4 +93,6 @@ void MoneyInterface::Update(float deltaTime, Event &events)
 		characterName.setString(Result);
 		characterName.setPosition(Vector2f(Gameboard::gameLocation.x + 0.0f,
 		Gameboard::gameLocation.y + 0.0f));
+=======
+>>>>>>> origin/master
 }

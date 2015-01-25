@@ -1,10 +1,8 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "SceneParent.h"
-#include "SFML\System\String.hpp"
 
-class MoneyInterface :
-	public SceneParent
+class MoneyInterface : public SceneParent
 {
 public:
 	MoneyInterface();
@@ -13,6 +11,7 @@ public:
 	~MoneyInterface() {};
 
 private:
+<<<<<<< HEAD
 	int moneyAmount;
 	int lastKill;
 	int lastTop;
@@ -21,4 +20,7 @@ private:
 	sf::RectangleShape moneyMeter;
 	sf::Text characterName;
 	//const sf::String name = "money dude";
+=======
+	sf::RectangleShape moneyMeter;
+>>>>>>> origin/master
 };
