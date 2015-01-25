@@ -152,9 +152,13 @@ void GameScene::Update(float deltaTime, Event &events)
 
 	if (damageProtection)
 	{
+		//character.sprite.setColor(Color::Color(RNG::Between(50, 200), RNG::Between(50, 200), RNG::Between(50, 200), 200));
 		protectionTimer += deltaTime;
 		if (protectionTimer >= 1.0f)
+		{
+			//character.sprite.setColor(Color::Black);
 			damageProtection = false;
+		}
 	}
 
 	// Hahmon liike.
@@ -168,6 +172,15 @@ void GameScene::Update(float deltaTime, Event &events)
 		character.SetSpeedY(0.f);
 
 	PlatformUpdate();
+
+	if (Gameboard::weapon == FIRE)
+	{
+		if (Gameboard::swordTimer > 2)
+		{
+			Gameboard::moneyAmount--;
+			Gameboard::swordTimer = 0;
+		}
+	}
 
 	// Pusketaan hahmoa ylös jos koskee platformiin.
 	// Pusketaan hahmoa ylös jos koskee maahan.
@@ -259,6 +272,9 @@ void GameScene::Update(float deltaTime, Event &events)
 	Gameboard::weaponTimer += deltaTime;
 	Gameboard::swordTimer += deltaTime;
 	Gameboard::textTimer += deltaTime;
+
+	//if (Gameboard::moneyAmount == 0 || !view.getViewport().contains(character.sprite.getPosition()))
+		//Gameboard::characterIsDead = true;
 
 	if (Gameboard::moneyAmount == 0 || character.sprite.getPosition().y >= screenSize.y)
 		Gameboard::characterIsDead = true;
@@ -696,14 +712,11 @@ void GameScene::DeleteDead()
 		if (it->isDead)
 		{
 			it = items.erase(it);
+			Gameboard::soundMaster.PlaySound("collision");
 		}
 		else
 		{
-<<<<<<< HEAD
 			it++;
-=======
-			// Delete, release.
->>>>>>> origin/master
 		}
 	}
 }

@@ -5,7 +5,7 @@ sf::Vector2f Gameboard::gameLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2i Gameboard::windowSize = sf::Vector2i(1280, 800);
 int Gameboard::moneyAmount = 3;
 int Gameboard::chargeAmount = 10;
-chargeType Gameboard::weapon = FIRE;
+chargeType Gameboard::weapon = NONE;
 SoundMaster Gameboard::soundMaster = SoundMaster();
 bool Gameboard::characterIsDead = false;
 float Gameboard::weaponTimer = 0;
@@ -14,7 +14,10 @@ float Gameboard::textTimer = 0;
 int Gameboard::swordCounter = 0;
 float Gameboard::dropDownTimer = 0;
 
+Gameboard::Gameboard()
+{
 
+}
 void Gameboard::loadSounds()
 {
 	soundMaster.LoadMusic("music1", "Sounds/music1.wav");

@@ -8,7 +8,7 @@ Projectile::Projectile(projectileType projectileType)
 	type = projectileType;
 	if (type == BULLET)
 	{
-		speedX = 30;
+		speedX = RNG::Between(15,30);
 		speedY = RNG::Between(20,80);
 		speedY = speedY / 15;
 		texture = R::LoadTexture("cannonBall");

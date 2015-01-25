@@ -6,13 +6,14 @@ enum chargeType
 	CANNON,
 	SWORD,
 	BOMERANG,
-	FIRE
+	FIRE,
+	NONE
 };
 class Gameboard
 {
 
 public:
-	Gameboard() {};
+	Gameboard();
 	~Gameboard() {};
 
 	static sf::Vector2f playerLocation;
