@@ -1,11 +1,15 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
 #include "SceneParent.h"
 #include "Character.h"
 #include "Platform.h"
 #include "Obstacle.h"
 #include "SoundMaster.h"
 #include "Projectile.h"
+#include "Item.h"
+
+
 
 class GameScene :
 	public SceneParent
@@ -28,7 +32,9 @@ private:
 	std::vector<Platform> platformVector; // platformit
 	std::vector<Obstacle> obstacles;
 	std::vector<Projectile> projectiles;
-
+	std::vector<Item> items;
+	sf::Sprite gunSprite;
+	Obstacle* bladeTargetObstacle;
 	void UpdateProjectiles();
 	void StartPiece();
 	void Piece1();
@@ -36,4 +42,5 @@ private:
 	void PlatformUpdate();
 	bool CheckPlatformCollision();
 	bool CheckGroundCollision();
+	void DeleteDead();
 };

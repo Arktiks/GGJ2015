@@ -5,7 +5,7 @@ WalkingEnemy::WalkingEnemy()
 {
 	isDead = false;
 	onFire = false;
-	HP = 9999;
+	HP = 3;
 	damage = 1;
 	texture = R::LoadTexture("slime_sheet");
 	sprite.setTexture(*texture);

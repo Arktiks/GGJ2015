@@ -13,8 +13,12 @@ public:
 	~MoneyInterface() {};
 
 private:
-	//int moneyAmount;
+	int moneyAmount;
+	int lastKill;
+	int lastTop;
+	int fontSize;
+
 	sf::RectangleShape moneyMeter;
-	//sf::Text characterName;
+	sf::Text characterName;
 	//const sf::String name = "money dude";
 };

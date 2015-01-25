@@ -4,7 +4,9 @@
 
 enum projectileType
 {
-	BULLET
+	BULLET,
+	BLADE,
+	BOOMERANG
 };
 
 class Projectile : public GameObject

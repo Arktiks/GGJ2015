@@ -4,8 +4,16 @@ sf::Vector2f Gameboard::playerLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2f Gameboard::gameLocation = sf::Vector2f(0.0f, 0.0f);
 sf::Vector2i Gameboard::windowSize = sf::Vector2i(1280, 800);
 int Gameboard::moneyAmount = 3;
+int Gameboard::chargeAmount = 10;
+chargeType Gameboard::weapon = FIRE;
 SoundMaster Gameboard::soundMaster = SoundMaster();
 bool Gameboard::characterIsDead = false;
+float Gameboard::weaponTimer = 0;
+float Gameboard::swordTimer = 0;
+float Gameboard::textTimer = 0;
+int Gameboard::swordCounter = 0;
+float Gameboard::dropDownTimer = 0;
+
 
 void Gameboard::loadSounds()
 {
@@ -22,7 +30,7 @@ void Gameboard::loadSounds()
 	soundMaster.AddSound("fireMobDeath", "Sounds/fireMobDeath.wav");
 	soundMaster.AddSound("fireProjectile", "Sounds/fireProjectile.wav");
 	soundMaster.AddSound("flameBurst", "Sounds/flameBurst.wav");
-	soundMaster.AddSound("gunShot", "Sounds/gunShot.wav");
+	soundMaster.AddSound("cannon", "Sounds/gunShot.wav");
 	soundMaster.AddSound("itemPickup", "Sounds/itempickup.wav");
 	soundMaster.AddSound("jump", "Sounds/jump.wav");
 	soundMaster.AddSound("itemPickup2", "Sounds/itempickup2.wav");
@@ -30,12 +38,17 @@ void Gameboard::loadSounds()
 	soundMaster.AddSound("magic1", "Sounds/magic1.wav");
 	soundMaster.AddSound("magic2", "Sounds/magic2.wav");
 	soundMaster.AddSound("magicFly", "Sounds/magicFly.wav");
-	soundMaster.AddSound("magicRock", "Sounds/magicHealth.wav");
-	soundMaster.AddSound("magicHealth", "Sounds/magicRock.wav");
+	soundMaster.AddSound("magicHealth", "Sounds/magicHealth.wav");
+	soundMaster.AddSound("magicRock", "Sounds/magicRock.wav");
 	soundMaster.AddSound("smoke", "Sounds/smoke.wav");
 	soundMaster.AddSound("swordStrike", "Sounds/swordStrike.wav");
 	soundMaster.AddSound("whistle", "Sounds/whistle.wav");
 
+	soundMaster.FindSound("jump")->setVolume(30);
+	soundMaster.FindSound("jump")->setPitch(0.9);
+
+	soundMaster.FindSound("swordStrike")->setVolume(30);
+	soundMaster.FindSound("fireProjectile")->setVolume(30);
 	// Testi
 	int tempRNG = RNG::Random(2);
 	{
@@ -52,6 +65,7 @@ void Gameboard::loadSounds()
 			soundMaster.setCurrentMusic("music3");
 		}
 	}
+	soundMaster.currentMusic->setVolume(40);
 	soundMaster.currentMusic->setLoop(true);
 	soundMaster.currentMusic->play();
 }
