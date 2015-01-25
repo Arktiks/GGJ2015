@@ -98,6 +98,7 @@
     </ClCompile>
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoneyInterface.cpp" />
     <ClCompile Include="Obstacle.cpp" />
@@ -122,6 +123,7 @@
     </ClInclude>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="MoneyInterface.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Platform.h" />

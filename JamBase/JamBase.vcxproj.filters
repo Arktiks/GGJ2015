@@ -80,6 +80,9 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SceneParent.h">
@@ -127,14 +130,11 @@
     <ClInclude Include="WalkingEnemy.h">
       <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
+    <ClInclude Include="SoundMaster.h" />
     <ClInclude Include="WalkingEnemy2.h">
       <Filter>Resource Files\Obstacles</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundMaster.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Item.h" />
   </ItemGroup>
 </Project>
